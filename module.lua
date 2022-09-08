@@ -631,7 +631,7 @@ gadmin.load = function(thm,title,btcmds)
             admin.setPrefix(n)
         end})
     end
-    admin.addCommand({name = '07anims',desc = 'enables 2007 anims',callback = function()
+    admin.addCommand({name = '07anims',desc = 'enables 2007 anims',callback = function(n)
         loadstring(game:HttpGet(("https://raw.githubusercontent.com/mgamingpro/HomebrewAdmin/master/scripts/2007anims.lua"),true))()
     end})
     admin.addCommand({name = 'credits',desc = 'Anarky#5844 | https://discord.gg/HKwEQ74cJr',callback = function()
