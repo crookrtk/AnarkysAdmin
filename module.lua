@@ -76,7 +76,7 @@ gadmin.load = function(thm,title,btcmds)
         thm = getgenv().themes.dark
     end
     if not title then
-        title = 'Anarkys Admin | https://discord.gg/HKwEQ74cJr'
+        title = 'Anarky#5844 | .gg/HKwEQ74cJr'
     end
     if not btcmds then 
         btcmds = true
@@ -631,7 +631,7 @@ gadmin.load = function(thm,title,btcmds)
             admin.setPrefix(n)
         end})
     end
-    admin.addCommand({name = 'credits',desc = 'Anarky#5844 | https://discord.gg/HKwEQ74cJr',callback = function()
+    admin.addCommand({name = 'credits',desc = 'Anarky#5844 | .gg/HKwEQ74cJr',callback = function()
         setclipboard('https://discord.gg/HKwEQ74cJr')
         local m = instance('Message',workspace)
         m.Text = 'Copied invite to clipboard!'
