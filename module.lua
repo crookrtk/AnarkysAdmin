@@ -624,7 +624,7 @@ gadmin.load = function(thm,title,btcmds)
         end
     end)
     if btcmds then
-        admin.addCommand({name = 'exit',desc = 'Exit admin',callback = function()
+        admin.addCommand({name = 'close',desc = 'Destroys the admin GUI',callback = function()
             admin.destroy()
         end})
         admin.addCommand({name = 'prefix',desc = 'Set prefix',callback = function(n)
