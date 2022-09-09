@@ -24,6 +24,847 @@ Admin2.addCommand({name = "dhrpcoins",desc = "Gives more coins, needs gui to wor
      end
     print(bool)
 end})
+Admin2.addCommand({name = "fling",desc = "Flings the player",callback = function(v,b)
+    
+    print(bool)
+end})
+Admin2.addCommand({name = "antikill",desc = "Prevents people from killing you",callback = function(bool)
+    game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled("Seated", false)
+                        game.Players.LocalPlayer.Character.Humanoid.Sit = true
+    print(bool)
+end})
+Admin2.addCommand({name = "unantikill",desc = "Disables antikill",callback = function(bool)
+    game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled("Seated", false)
+                        game.Players.LocalPlayer.Character.Humanoid.Sit = false
+    print(bool)
+end})
+Admin2.addCommand({name = "antivoid4",desc = "Another variation of av2",callback = function(bool)
+    for i,v in pairs(game.Players:GetChildren()) do
+        if v.Character ~= nil and v ~= game.Players.LocalPlayer then
+            if v.Character:FindFirstChild("Right Arm") then
+                v.Character:FindFirstChild("Right Arm").ChildAdded:Connect(function(child)
+                    if child.Name == "RightGrip" then
+                        wait(0.1)
+                        if child.Part1 ~= nil then
+                            if child.Part1.Parent ~= nil then
+                                if child.Part1.Parent:IsA("Accessory") then
+                                    child:Destroy()
+                                end
+                            end
+                        end
+                    end
+                end)
+                for i,v in pairs(v.Character:FindFirstChild("Right Arm"):GetChildren()) do
+                    if v.Name == "RightGrip" then
+                        wait(0.1)
+                        if Part1 ~= nil then
+                            if Part1.Parent ~= nil then
+                                if v.Part1.Parent:IsA("Accessory") then
+                                    v:Destroy()
+                                end
+                            end
+                        end
+                    end
+                end
+            elseif v.Character:FindFirstChild("RightHand") and v.Character:FindFirstChild("UpperTorso") then
+                v.Character:FindFirstChild("RightHand").ChildAdded:Connect(function(child)
+                    if child.Name == "RightGrip" then
+                        wait(0.1)
+                        if child.Part1 ~= nil then
+                            if child.Part1.Parent ~= nil then
+                                if child.Part1.Parent:IsA("Accessory") then
+                                    child:Destroy()
+                                end
+                            end
+                        end
+                    end
+                end)
+                for i,v in pairs(v.Character:FindFirstChild("RightHand"):GetChildren()) do
+                    if v.Name == "RightGrip" then
+                        wait(0.1)
+                        if Part1 ~= nil then
+                            if Part1.Parent ~= nil then
+                                if v.Part1.Parent:IsA("Accessory") then
+                                    v:Destroy()
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+        v.CharacterAppearanceLoaded:Connect(function(char)
+            if v.Character:FindFirstChild("Right Arm") then
+                v.Character:FindFirstChild("Right Arm").ChildAdded:Connect(function(child)
+                    if child.Name == "RightGrip" then
+                        wait(0.1)
+                        if child.Part1 ~= nil then
+                            if child.Part1.Parent ~= nil then
+                                if child.Part1.Parent:IsA("Accessory") then
+                                    child:Destroy()
+                                end
+                            end
+                        end
+                    end
+                end)
+                for i,v in pairs(v.Character:FindFirstChild("Right Arm"):GetChildren()) do
+                    if v.Name == "RightGrip" then
+                        wait(0.1)
+                        if Part1 ~= nil then
+                            if Part1.Parent ~= nil then
+                                if v.Part1.Parent:IsA("Accessory") then
+                                    v:Destroy()
+                                end
+                            end
+                        end
+                    end
+                end
+            elseif v.Character:FindFirstChild("RightHand") and v.Character:FindFirstChild("UpperTorso") then
+                v.Character:FindFirstChild("RightHand").ChildAdded:Connect(function(child)
+                    if child.Name == "RightGrip" then
+                        wait(0.1)
+                        if child.Part1 ~= nil then
+                            if child.Part1.Parent ~= nil then
+                                if child.Part1.Parent:IsA("Accessory") then
+                                    child:Destroy()
+                                end
+                            end
+                        end
+                    end
+                end)
+                for i,v in pairs(v.Character:FindFirstChild("RightHand"):GetChildren()) do
+                    if v.Name == "RightGrip" then
+                        wait(0.1)
+                        if Part1 ~= nil then
+                            if Part1.Parent ~= nil then
+                                if v.Part1.Parent:IsA("Accessory") then
+                                    v:Destroy()
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+     
+    game.Players.PlayerAdded:Connect(function(v)
+    wait()
+        if v.Character ~= nil and v ~= game.Players.LocalPlayer then
+            if v.Character:FindFirstChild("Right Arm") then
+                v.Character:FindFirstChild("Right Arm").ChildAdded:Connect(function(child)
+                    if child.Name == "RightGrip" then
+                        wait(0.1)
+                        if child.Part1 ~= nil then
+                            if child.Part1.Parent ~= nil then
+                                if child.Part1.Parent:IsA("Accessory") then
+                                    child:Destroy()
+                                end
+                            end
+                        end
+                    end
+                end)
+                for i,v in pairs(v.Character:FindFirstChild("Right Arm"):GetChildren()) do
+                    if v.Name == "RightGrip" then
+                        wait(0.1)
+                        if Part1 ~= nil then
+                            if Part1.Parent ~= nil then
+                                if v.Part1.Parent:IsA("Accessory") then
+                                    v:Destroy()
+                                end
+                            end
+                        end
+                    end
+                end
+            elseif v.Character:FindFirstChild("RightHand") and v.Character:FindFirstChild("UpperTorso") then
+                v.Character:FindFirstChild("RightHand").ChildAdded:Connect(function(child)
+                    if child.Name == "RightGrip" then
+                        wait(0.1)
+                        if child.Part1 ~= nil then
+                            if child.Part1.Parent ~= nil then
+                                if child.Part1.Parent:IsA("Accessory") then
+                                    child:Destroy()
+                                end
+                            end
+                        end
+                    end
+                end)
+                for i,v in pairs(v.Character:FindFirstChild("RightHand"):GetChildren()) do
+                    if v.Name == "RightGrip" then
+                        wait(0.1)
+                        if Part1 ~= nil then
+                            if Part1.Parent ~= nil then
+                                if v.Part1.Parent:IsA("Accessory") then
+                                    v:Destroy()
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+        v.CharacterAppearanceLoaded:Connect(function(char)
+            if v.Character:FindFirstChild("Right Arm") then
+                v.Character:FindFirstChild("Right Arm").ChildAdded:Connect(function(child)
+                    if child.Name == "RightGrip" then
+                        wait(0.1)
+                        if child.Part1 ~= nil then
+                            if child.Part1.Parent ~= nil then
+                                if child.Part1.Parent:IsA("Accessory") then
+                                    child:Destroy()
+                                end
+                            end
+                        end
+                    end
+                end)
+                for i,v in pairs(v.Character:FindFirstChild("Right Arm"):GetChildren()) do
+                    if v.Name == "RightGrip" then
+                        wait(0.1)
+                        if Part1 ~= nil then
+                            if Part1.Parent ~= nil then
+                                if v.Part1.Parent:IsA("Accessory") then
+                                    v:Destroy()
+                                end
+                            end
+                        end
+                    end
+                end
+            elseif v.Character:FindFirstChild("RightHand") and v.Character:FindFirstChild("UpperTorso") then
+                v.Character:FindFirstChild("RightHand").ChildAdded:Connect(function(child)
+                    if child.Name == "RightGrip" then
+                        wait(0.1)
+                        if child.Part1 ~= nil then
+                            if child.Part1.Parent ~= nil then
+                                if child.Part1.Parent:IsA("Accessory") then
+                                    child:Destroy()
+                                end
+                            end
+                        end
+                    end
+                end)
+                for i,v in pairs(v.Character:FindFirstChild("RightHand"):GetChildren()) do
+                    if v.Name == "RightGrip" then
+                        wait(0.1)
+                        if Part1 ~= nil then
+                            if Part1.Parent ~= nil then
+                                if v.Part1.Parent:IsA("Accessory") then
+                                    v:Destroy()
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end)
+    print(bool)
+end})
+Admin2.addCommand({name = "antivoid2",desc = "Prevents decent voids",callback = function(bool)
+    local player = game:GetService("Players").LocalPlayer
+local Backpack = player.Backpack
+
+local function AntiVoid()
+    local Tools = {}
+    for _, v in pairs(Backpack:GetChildren()) do
+        if v:IsA("Tool") then
+            table.insert(Tools, v)
+        end
+    end
+    for _, v in pairs(Backpack:GetChildren()) do
+        if v:IsA("Tool") then
+            table.insert(Tools, v)
+        end
+    end
+    player.Character.ChildAdded:Connect(
+        function(child)
+            if child:IsA("Tool") and not table.find(Tools, child) then
+                child:Destroy()
+                task.wait()
+                notify("protected", 5)
+            end
+        end
+    )
+end
+player.CharacterAdded:Connect(
+    function(char)
+        notify("died", 5)
+        char:WaitForChild("HumanoidRootPart")
+        AntiVoid()
+    end
+)
+local Player = game.Players.LocalPlayer
+local Character = Player.Character
+local human = Character.Humanoid
+local equip
+
+local Debris = game:GetService("Debris")
+
+local MyTools = {}
+
+function createobj(class, properties)
+    print("dbug")
+    local obj = Instance.new(class)
+
+    for i, v in pairs(properties) do
+        obj[i] = v
+    end
+    return obj
+end
+
+for i, v in pairs(Player.Backpack:GetChildren()) do
+    if v:IsA("Tool") then
+        table.insert(MyTools, (#MyTools + 1), v)
+        print(#MyTools)
+    end
+end
+
+function Remove(Unwanted)
+    Unwanted.Parent = Player.Backpack
+    Unwanted.Parent = game.StarterPack
+    --  Unwanted.Handle:Destroy()
+end
+
+Character.ChildAdded:Connect(
+    function(PT)
+        if PT:IsA("Tool") then
+            if not table.find(MyTools, PT) then
+                Debris:AddItem(PT.Handle, 0)
+                Debris:AddItem(PT, 0)
+                local BodyVelocity =
+                    createobj(
+                    "BodyVelocity",
+                    {Name = "BodvVelocity", Velocity = Vector3.new(0, 0, 0), MaxForce = Vector3.new(0, 0, 0)}
+                )
+                BodyVelocity.Parent = Character.HumanoidRootPart
+                human.Parent = workspace.Camera
+                task.wait()
+                human.Parent = Character
+                BodyVelocity:Destroy()
+            end
+        end
+    end
+)
+local Services = {
+    ["P"] = game:GetService("Players"),
+    ["W"] = game:GetService("Workspace"),
+    ["RS"] = game:GetService("RunService")
+}
+local LP = Services["P"]["LocalPlayer"]
+local Char, Pack = LP["Character"], LP["Backpack"]
+local Hum = Char["Humanoid"]
+Hum:SetStateEnabled("Seated", false)
+Hum.Sit = true
+
+game:GetService("Workspace").FallenPartsDestroyHeight = math.huge - math.huge
+
+task.spawn(
+    function()
+        for i, v in pairs(game:GetService("Players").LocalPlayer:FindFirstChildOfClass("Backpack"):GetDescendants()) do
+            if v:IsA("Tool") or not nil then
+                v:Destroy()
+            end
+        end
+        for i, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+            if v:IsA("Tool") or v:IsA("HopperBin") then
+                v:Destroy()
+            end
+        end
+    end
+)
+
+local LP = game:GetService("Players").LocalPlayer
+local Char, Pack = LP.Character, LP.Backpack
+local HUM = Char.Humanoid
+local UIS = game:GetService "UserInputService"
+local Toggler = false
+local Keybind = Enum.KeyCode.F4
+local ST = {}
+local SF = {}
+
+function Notification(title, text, time)
+end
+
+for i, v in pairs(Pack:GetChildren()) do
+    if v:IsA("Tool") then
+        table.insert(ST, v)
+    end
+end
+
+SF[#SF + 1] =
+    UIS.InputBegan:Connect(
+    function(Input, IsTyping)
+        if IsTyping then
+            return
+        end
+        if Input["KeyCode"] == Keybind then
+            Toggler = not Toggler
+            if Toggler == false then
+                --Notification
+
+                --Anti fe kill
+                HUM:SetStateEnabled("Seated", false)
+                HUM.Sit = true
+
+                --Anti void
+                Char.ChildAdded:Connect(
+                    function(x)
+                        if x:IsA("Tool") and not table.find(ST, x) then
+                            x.Handle:Destroy()
+                        end
+                    end
+                )
+            elseif Toggler == true then
+
+                HUM:SetStateEnabled("Seated", false)
+                HUM.Sit = false
+
+                Char.ChildAdded:Connect(
+                    function(x)
+                        if x:IsA("Tool") and not table.find(ST, x) then
+                        end
+                    end
+                )
+            end
+        end
+    end
+)
+
+SF[#SF + 1] =
+    HUM.Died:Connect(
+    function()
+        for I, V in pairs(SF) do
+            if V then
+                V:Disconnect()
+            end
+        end
+    end
+)
+
+local function callback(Text)
+    if Text == "Load" then
+        local LP, RS = game:GetService("Players").LocalPlayer, game:GetService("RunService")
+        local Char, Pack = LP.Character, LP.Backpack
+        local HRP = Char.HumanoidRootPart
+        local UIS = game:GetService "UserInputService"
+        local Toggler = false
+        local Keybind = Enum.KeyCode.F8
+        local ST = {}
+        function notify(title, text, time)
+        end
+        for i, v in pairs(Pack:GetChildren()) do
+            if v:IsA("Tool") then
+                table.insert(ST, v)
+            end
+        end
+        UIS.InputBegan:Connect(
+            function(Input, IsTyping)
+                if IsTyping then
+                    return
+                end
+                if Input["KeyCode"] == Keybind then
+                    Toggler = not Toggler
+                    if Toggler == false then
+                        --Notification
+                        --Anti fe kill
+                        game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled("Seated", false)
+                        game.Players.LocalPlayer.Character.Humanoid.Sit = true
+                        --Anti void
+                        Char.ChildAdded:Connect(
+                            function(x)
+                                if x:IsA("Tool") and not table.find(ST, x) then
+                                    x.Handle:Destroy()
+                                end
+                            end
+                        )
+                    elseif Toggler == true then
+                        --Notification
+                        --Turns off Anti Fe kill
+                        game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled("Seated", false)
+                        game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                        --Turns off Anti Void
+                        Char.ChildAdded:Connect(
+                            function(x)
+                                if x:IsA("Tool") and not table.find(ST, x) then
+                                    task.wait()
+                                end
+                            end
+                        )
+                    end
+                end
+            end
+        )
+    end
+end
+
+------------------------------------------------
+local NotificationBindable = Instance.new("BindableFunction")
+NotificationBindable.OnInvoke = callback
+------------------------------------------------
+game.StarterGui:SetCore(
+    "SendNotification",
+    {
+        Title = "Anti Loaded",
+        Text = "Anarky's Admin'",
+        Icon = "",
+        Duration = 5,
+        Callback = NotificationBindable
+    }
+)
+
+task.spawn(
+    function()
+        for i, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+            if v:isA("Tool") then
+                v:Destroy()
+            end
+        end
+    end
+)
+
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Players = game:GetService("Players")
+
+local Player = Players.LocalPlayer
+local Mouse = Player:GetMouse()
+
+local AntiTool = function(Character)
+    Character.ChildAdded:Connect(
+        function(x)
+            if x:IsA("Tool") then
+                coroutine.wrap(
+                    function()
+                        local Handle = x:FindFirstChild("Handle")
+                        local Touch
+                        if Handle then
+                            Handle.Name = "Part"
+                            Handle.CanTouch = false
+                        end
+                    end
+                )()
+                x.AncestryChanged:Connect(
+                    function(Tool, Parent)
+                        if Parent == Player.Character then
+                            Tool:Destroy()
+                            coroutine.wrap(
+                                function()
+                                    task.wait()
+                                    Tool.Parent = nil
+                                end
+                            )()
+                        end
+                    end
+                )
+            end
+        end
+    )
+end
+
+local AntiKill = function()
+    if
+        Player.Character and Player.Character:FindFirstChildWhichIsA("Humanoid") and
+            Player.Character:FindFirstChildWhichIsA("Humanoid").RootPart and
+            workspace.CurrentCamera
+     then
+        local Humanoid = Player.Character:FindFirstChildWhichIsA("Humanoid")
+        local RootPart = Humanoid.RootPart
+        if
+            UserInputService.MouseBehavior == Enum.MouseBehavior.LockCenter and
+                not RootPart:FindFirstChildWhichIsA("BodyMover")
+         then
+            local X, Y, Z = workspace.CurrentCamera.CFrame:ToEulerAnglesYXZ()
+            RootPart.CFrame = CFrame.new(RootPart.Position) * CFrame.Angles(0, Y, 0)
+        end
+        Humanoid.Sit = true
+        Humanoid:SetStateEnabled("Seated", false)
+    end
+end
+
+local AVoid = function(Character)
+    Character.ChildAdded:Connect(
+        function(Tool)
+            if
+                Character and Character:FindFirstChildWhichIsA("Humanoid") and
+                    Character:FindFirstChildWhichIsA("Humanoid").RootPart and
+                    Tool:IsA("Tool")
+             then
+                workspace["FallenPartsDestroyHeight"] = 0 / 0
+                local Humanoid = Character:FindFirstChildWhichIsA("Humanoid")
+                local RootPart = Humanoid.RootPart
+                local CurrentPosition = RootPart.CFrame
+                Humanoid:SetStateEnabled(Enum.HumanoidStateType.Freefall, false)
+                repeat
+                    RunService.Heartbeat:wait()
+                until Tool.Parent == Character
+                RootPart.CFrame = CurrentPosition
+                RootPart.Velocity = Vector3.new()
+                Humanoid:SetStateEnabled(Enum.HumanoidStateType.Freefall, true)
+            end
+        end
+    )
+end
+
+for _, x in next, Players:GetPlayers() do
+    if x ~= Player and x.Character then
+        AntiTool(x.Character)
+        x.CharacterAdded:Connect(AntiTool)
+    end
+end
+Players.PlayerAdded:Connect(
+    function(P)
+        if P ~= Player then
+            P.CharacterAdded:Connect(AntiTool)
+        end
+    end
+)
+
+RunService.RenderStepped:Connect(AntiKill)
+
+AVoid(Player.Character)
+Player.CharacterAdded:Connect(AVoid)
+
+local LocalPlayer = game.Players.LocalPlayer
+game:GetService "RunService".Stepped:Connect(
+    function()
+        local mouse = LocalPlayer:GetMouse()
+        local uis = game:GetService "UserInputService"
+        local root = LocalPlayer.Character["HumanoidRootPart"]
+        if uis.MouseBehavior == Enum.MouseBehavior.LockCenter then
+            local ray = Ray.new(root.Position, mouse.UnitRay.Direction * 5000)
+            local part, pos = workspace:FindPartOnRayWithIgnoreList(ray, {workspace})
+
+            root.CFrame = CFrame.new(root.Position, Vector3.new(pos.X, root.Position.Y, pos.Z))
+        end
+        settings().Network.IncomingReplicationLag = 0
+        game.Players.LocalPlayer.Character.Humanoid.Sit = true
+        game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled("Seated", false)
+    end
+)
+
+local Players = game:GetService("Players")
+local function onChildAdded(child)
+    task.wait()
+    if child.Name == "RightGrip" then
+        if not child.Part1 then
+            task.wait()
+        end
+        if child.Part1 and child.Part1.Parent and child.Part1.Parent:IsA("Accoutrement") then
+            child:Destroy()
+        end
+    end
+end
+local function onCharacterAdded(char)
+    if char then
+        task.spawn(
+            function()
+                local part = char:WaitForChild("Right Arm", 3)
+                if part then
+                    part.ChildAdded:Connect(onChildAdded)
+                end
+            end
+        )
+        task.spawn(
+            function()
+                local part = char:WaitForChild("RightHand", 3)
+                if part then
+                    part.ChildAdded:Connect(onChildAdded)
+                end
+            end
+        )
+    end
+end
+local function onPlayerAdded(p)
+    if p ~= Players.LocalPlayer then
+        p.CharacterAdded:Connect(onCharacterAdded)
+        onCharacterAdded(p.Character)
+    end
+end
+Players.PlayerAdded:Connect(onPlayerAdded)
+for _, p in ipairs(Players:GetPlayers()) do
+    onPlayerAdded(p)
+end
+
+task.spawn(
+    function()
+        _G.STOP = true -- disable
+        wait(1)
+        _G.STOP = false -- enable
+
+        local off = false
+        local cf, pos
+        local sotp = false
+        local tools = {}
+
+        for i, v in pairs(game:service "Players".LocalPlayer.Backpack:getChildren "") do
+            tools[v] = true
+        end
+
+        game:service "Players".LocalPlayer.Backpack.ChildAdded:connect(
+            function(c)
+                if off then
+                    return
+                end
+                tools[c] = true
+            end
+        )
+
+        local thing = function(ob)
+            if off then
+                return
+            end
+            if ob:IsA("Tool") and not tools[ob] then
+                game:service "RunService".Stepped:wait ""
+                tools[ob] = true
+                sotp = true
+                ob.Parent = game:service "Players".LocalPlayer.Backpack
+                for i = 1, 1 do
+                    if
+                        game:service "Players".LocalPlayer.Character and
+                            game:service "Players".LocalPlayer.Character:findFirstChild "HumanoidRootPart"
+                     then
+                        game:service "Players".LocalPlayer.Character.HumanoidRootPart.CFrame = cf
+                        for i, v in pairs(game:service "Players".LocalPlayer.Character:getChildren "") do
+                            if v:IsA("BasePart") or v:IsA("MeshPart") then
+                                v.Velocity = Vector3.new(0, 0, 0)
+                            end
+                        end
+                        game:service "RunService".Stepped:wait ""
+                    end
+                end
+                sotp = false
+            end
+        end
+
+        game:service "Players".LocalPlayer.Character.ChildAdded:connect(thing)
+        game:service "Players".LocalPlayer.CharacterAdded:connect(
+            function(c)
+                c.ChildAdded:connect(thing)
+            end
+        )
+
+        while task.wait() and not _G.STOP do
+            if
+                game:service "Players".LocalPlayer.Character and
+                    game:service "Players".LocalPlayer.Character:findFirstChild("HumanoidRootPart") and
+                    not sotp
+             then
+                cf = game:service "Players".LocalPlayer.Character.HumanoidRootPart.CFrame
+                pos = game:service "Players".LocalPlayer.Character.HumanoidRootPart.Position
+            end
+        end
+
+        off = true
+    end
+)
+
+spawn(
+    function()
+        _G.STOP = true -- disable
+        wait(1)
+        _G.STOP = false -- enable
+        local off = false
+        local cf, pos
+        local sotp = false
+        local tools = {}
+
+        for i, v in pairs(game:service "Players".LocalPlayer.Backpack:getChildren "") do
+            tools[v] = true
+        end
+
+        game:service "Players".LocalPlayer.Backpack.ChildAdded:connect(
+            function(c)
+                if off then
+                    return
+                end
+                tools[c] = true
+            end
+        )
+
+        local thing = function(ob)
+            if off then
+                return
+            end
+            if ob:IsA("Tool") and not tools[ob] then
+                game:service "RunService".Stepped:wait ""
+                tools[ob] = true
+                sotp = true
+                ob.Parent = game:service "Players".LocalPlayer.Backpack
+                for i = 1, 1 do
+                    if
+                        game:service "Players".LocalPlayer.Character and
+                            game:service "Players".LocalPlayer.Character:findFirstChild "HumanoidRootPart"
+                     then
+                        game:service "Players".LocalPlayer.Character.HumanoidRootPart.CFrame = cf
+                        for i, v in pairs(game:service "Players".LocalPlayer.Character:getChildren "") do
+                            if v:IsA("BasePart") or v:IsA("MeshPart") then
+                                v.Velocity = Vector3.new(10, 33, 12)
+                            end
+                        end
+                        game:service "RunService".Stepped:wait ""
+                    end
+                end
+                sotp = false
+            end
+        end
+
+        game:service "Players".LocalPlayer.Character.ChildAdded:connect(thing)
+        game:service "Players".LocalPlayer.CharacterAdded:connect(
+            function(c)
+                c.ChildAdded:connect(thing)
+            end
+        )
+
+        while task.wait() and not _G.STOP do
+            if
+                game:service "Players".LocalPlayer.Character and
+                    game:service "Players".LocalPlayer.Character:findFirstChild("HumanoidRootPart") and
+                    not sotp
+             then
+                cf = game:service "Players".LocalPlayer.Character.HumanoidRootPart.CFrame
+                pos = game:service "Players".LocalPlayer.Character.HumanoidRootPart.Position
+            end
+        end
+
+        off = true
+    end
+)
+
+spawn(
+    function()
+        _G.STOP = true -- disable
+        wait(1)
+        _G.STOP = false -- enable
+        print("av2 loaded")
+    end)
+    print(bool)
+end})
+Admin2.addCommand({name = "antivoid3",desc = "Prevents older/trash voids",callback = function(bool)
+    local AcceptedTools = {}
+    local player = game.Players.LocalPlayer
+    
+    for i,v in pairs(player.Backpack:GetChildren()) do
+    table.insert(AcceptedTools,v)
+    end
+    
+    player.Backpack.ChildAdded:Connect(function(t)
+    table.insert(AcceptedTools, t)
+    end)
+    
+    player.Character.ChildAdded:Connect(function(t)
+    if t:IsA("Tool") then
+    local accepted = false
+    for i,v in pairs(AcceptedTools) do
+    if t == v then
+    accepted = true
+    end
+    end
+    if not accepted then
+    t:Destroy()
+    end
+    end
+    end)
+    print(bool)
+end})
 Admin2.addCommand({name = "invis",desc = "Makes your character invisible",callback = function(bool)
     --[[Invisibility Toggle
 
@@ -824,3 +1665,16 @@ Admin2.addCommand({name = "goto",desc = "Teleports you to the target",callback =
         m:Destroy()
     end
 end})
+--- dark chat loader
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+local PlayerGui = Player:WaitForChild("PlayerGui")
+local BubbleChatUI = PlayerGui:WaitForChild("BubbleChat")
+BubbleChatUI.DescendantAdded:Connect(function(Descendant)
+if Descendant:IsA("ImageLabel") then
+Descendant.ImageColor3 = Color3.fromRGB(59, 59, 59)
+elseif Descendant:IsA("TextLabel") then
+Descendant.TextColor3 = Color3.new(1,1,1)
+end
+end)
+--
