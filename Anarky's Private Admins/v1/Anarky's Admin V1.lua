@@ -2034,7 +2034,7 @@ end)
 
 AddCommand("admin",function()
 	wait(.2)
-	Chat("[ < "..Admin.Name.." > ]"..""..Admin.Version)
+	Chat("[ |< "..Admin.Name.." >| ]"..""..Admin.Version)
 end)
 
 AddCommand("date", function()
@@ -2330,9 +2330,9 @@ end)
 
 
 AddCommand("prefix", function()
-	writefile("legendary0001.lua", tostring(args[2]))
+	writefile("AnarkyMoment.lua", tostring(args[2]))
 	wait()
-	Admin.Prefix =  readfile("legendary0001.lua")
+	Admin.Prefix =  readfile("AnarkyMoment.lua")
 end)
 
 AddCommand("teleport", function()
@@ -4684,27 +4684,25 @@ end
 removeparts()
 end)
 
-AddCommand("antichat",function()
+AddCommand("re4",function()
 
-if not game:IsLoaded() then
-    game.Loaded:wait()
-end
-
-local Players = game:GetService("Players")
-local Player = Players.LocalPlayer or Players.PlayerAdded:wait()
-
-local PostMessage = require(Player:WaitForChild("PlayerScripts"):WaitForChild("ChatScript"):WaitForChild("ChatMain")).MessagePosted
-MessageEvent = Instance.new("BindableEvent")
-
-local OldFunctionHook
-local PostMessageHook = function(self, Message)
-    if not checkcaller() and self == PostMessage then
-        MessageEvent:Fire(Message)
-        return
+	local cf = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+    local player = game.Players.LocalPlayer
+    if player.Character then
+    if player.Character:FindFirstChild("Humanoid") then
+    player.Character.Humanoid.Name = "1"
     end
-    return OldFunctionHook(self, Message)
-end
-OldFunctionHook = hookfunction(PostMessage.fire, PostMessageHook)
+    local l = player.Character["1"]:Clone()
+    l.Parent = player.Character
+    l.Name = "Humanoid"; wait(0.1)
+    player.Character["1"]:Destroy()
+    workspace.CurrentCamera.CameraSubject = player.Character.Humanoid
+    player.Character.Animate.Disabled = true; wait(0.1)
+    player.Character.Animate.Disabled = false
+    game.Players.LocalPlayer.CharacterAdded:Wait()
+    game.Players.LocalPlayer.Character:WaitForChild "ForceField":Destroy()
+    game.Players.LocalPlayer.Character:WaitForChild "HumanoidRootPart".CFrame = cf
+    end
 end)
 
 
