@@ -25,6 +25,73 @@ Admin2.addCommand({name = "dhrpcoins",desc = "Gives more coins, needs gui to wor
      end
     print(bool)
 end})
+Admin2.addCommand({name = "lh",desc = "Holds your boombox lower",callback = function(bool)
+        for i, v in pairs(game.Players.LocalPlayer.Character.Humanoid:GetPlayingAnimationTracks()) do
+            v:Stop()
+        end
+        for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+            if string.find(string.lower(v.Name), 'boomb') then
+                v.Grip = CFrame.new(-0.0109999999, 0.633000016, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+                v.Parent = game.Players.LocalPlayer.Backpack
+                v.Parent = game.Players.LocalPlayer.Character
+                v.Handle.Massless = true
+    
+            end
+    
+        end
+    print(bool)
+end})
+Admin2.addCommand({name = "shop",desc = "Server hops",callback = function(bool)
+    local LP = game:GetService('Players').LocalPlayer
+
+	local ogChar = LP.Character
+	LP.Character = Clone
+	LP.Character = ogChar
+	function shop()
+		pcall(function()
+			local Servers =
+				game.HttpService:JSONDecode(
+				game:HttpGet("https://games.roblox.com/v1/games/417267366/servers/Public?sortOrder=Asc&limit=100")
+			)
+			while task.wait() do
+				v = Servers.data[math.random(#Servers.data)]
+				if v.playing < v.maxPlayers - 2 and v.id ~= game.JobId then
+					game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, v.id)
+					break
+				end
+			end
+		end)
+	end
+	
+	
+	local function hop()
+		shop()
+		while task.wait() do
+			pcall(shop)
+		end
+	end
+	hop()
+    print(bool)
+end})
+Admin2.addCommand({name = "droptools",desc = "Drops all tools in backpack",callback = function(bool)
+    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetDescendants()) do
+        if v:IsA("Tool")  then
+     task.wait()
+         v.Parent = game.Players.LocalPlayer.Character
+     task.wait()
+         v.Parent = game.Workspace
+     end
+     end
+    print(bool)
+end})
+Admin2.addCommand({name = "rhand",desc = "Removes Right Hand",callback = function(bool)
+    game.Players.LocalPlayer.Character.RightHand:Destroy()
+    print(bool)
+end})
+Admin2.addCommand({name = "rarm",desc = "Removes Right Hand",callback = function(bool)
+    game.Players.LocalPlayer.Character['Right Arm']:Destroy()
+    print(bool)
+end})
 Admin2.addCommand({name = "fling",desc = "Flings the player",callback = function(v,b)
     
     print(bool)
@@ -1467,6 +1534,23 @@ Admin2.addCommand({name = "anticrash",desc = "Prevents 3D Clothing crashes",call
     print(bool)
 end})
 Admin2.addCommand({name = "re",desc = "Refreshes your character",callback = function(bool)
+    local LP = game:GetService('Players').LocalPlayer
+
+    local ogChar = LP.Character
+    LP.Character = Clone
+    LP.Character = ogChar
+    wait(4.9)
+    local pos = LP.Character.HumanoidRootPart.CFrame
+    LP.Character:BreakJoints()
+    LP.CharacterAdded:wait();
+    repeat
+        wait()
+    until LP.Character
+    wait(.2)
+    LP.Character.HumanoidRootPart.CFrame = pos + Vector3.new(0,1,0)
+    print(bool)
+end})
+Admin2.addCommand({name = "re4",desc = "4th variation of refresh",callback = function(bool)
     LP = game:GetService('Players').LocalPlayer
 
 prev = LP.Character:WaitForChild('HumanoidRootPart').CFrame --Holds old CFrame string
@@ -1687,7 +1771,7 @@ end
 _G.NametagsRan = true
 local plrs = game:GetService("Players")
 
-local UI = game:GetObjects("rbxassetid://7437010836")[1]
+local UI = game:GetObjects("rbxassetid://10865836123")[1]
 if syn then
     syn.protect_gui(UI)
 end
