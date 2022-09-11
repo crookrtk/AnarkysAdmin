@@ -25,6 +25,37 @@ Admin2.addCommand({name = "dhrpcoins",desc = "Gives more coins, needs gui to wor
      end
     print(bool)
 end})
+Admin2.addCommand({name = "unview",desc = "hi",callback = function(b)
+    workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
+
+end})
+Admin2.addCommand({name = "antivoid",desc = "Prevents voids, lower ping = better anti",callback = function(bool)
+    local AcceptedTools = {}
+    local player = game.Players.LocalPlayer
+    
+    for i,v in pairs(player.Backpack:GetChildren()) do
+    table.insert(AcceptedTools,v)
+    end
+    
+    player.Backpack.ChildAdded:Connect(function(t)
+    table.insert(AcceptedTools, t)
+    end)
+    
+    player.Character.ChildAdded:Connect(function(t)
+    if t:IsA("Tool") then
+    local accepted = false
+    for i,v in pairs(AcceptedTools) do
+    if t == v then
+    accepted = true
+    end
+    end
+    if not accepted then
+    t:Destroy()
+    end
+    end
+    end)
+    print(bool)
+end})
 Admin2.addCommand({name = "lh",desc = "Holds your boombox lower",callback = function(bool)
         for i, v in pairs(game.Players.LocalPlayer.Character.Humanoid:GetPlayingAnimationTracks()) do
             v:Stop()
@@ -73,6 +104,24 @@ Admin2.addCommand({name = "shop",desc = "Server hops",callback = function(bool)
 	hop()
     print(bool)
 end})
+Admin2.addCommand({name = "lscale",desc = "Rescales your leg",callback = function(bool)
+    local function delete()
+        game.Players.LocalPlayer.Character.LeftFoot:WaitForChild'OriginalSize':Destroy()
+        game.Players.LocalPlayer.Character.LeftLowerLeg:WaitForChild'OriginalSize':Destroy()
+        game.Players.LocalPlayer.Character.LeftUpperLeg:WaitForChild'OriginalSize':Destroy()
+    end
+    game.Players.LocalPlayer.Character.LeftLowerLeg.LeftKneeRigAttachment.OriginalPosition:Destroy()
+    game.Players.LocalPlayer.Character.LeftUpperLeg.LeftKneeRigAttachment.OriginalPosition:Destroy()
+    game.Players.LocalPlayer.Character.LeftLowerLeg:WaitForChild'LeftKneeRigAttachment':Destroy()
+    game.Players.LocalPlayer.Character.LeftUpperLeg:WaitForChild'LeftKneeRigAttachment':Destroy()
+    for i,v in next, game.Players.LocalPlayer.Character.Humanoid:GetChildren() do
+        if v:IsA'NumberValue' then
+            delete()
+            v:Destroy()
+        end
+    end
+    print(bool)
+end})
 Admin2.addCommand({name = "droptools",desc = "Drops all tools in backpack",callback = function(bool)
     for i,v in pairs(game.Players.LocalPlayer.Backpack:GetDescendants()) do
         if v:IsA("Tool")  then
@@ -92,18 +141,10 @@ Admin2.addCommand({name = "rarm",desc = "Removes Right Hand",callback = function
     game.Players.LocalPlayer.Character['Right Arm']:Destroy()
     print(bool)
 end})
-Admin2.addCommand({name = "fling",desc = "Flings the player",callback = function(v,b)
-    
-    print(bool)
-end})
 Admin2.addCommand({name = "antikill",desc = "Prevents people from killing you",callback = function(bool)
     game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled("Seated", false)
-                        game.Players.LocalPlayer.Character.Humanoid.Sit = true
-    print(bool)
-end})
-Admin2.addCommand({name = "unantikill",desc = "Disables antikill",callback = function(bool)
-    game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled("Seated", false)
-                        game.Players.LocalPlayer.Character.Humanoid.Sit = false
+	game.Players.LocalPlayer.Character.Humanoid.Sit = true
+	game:GetService('RunService').RenderStepped:Wait()
     print(bool)
 end})
 Admin2.addCommand({name = "antivoid4",desc = "Another variation of av2",callback = function(bool)
@@ -1116,13 +1157,13 @@ end
     print(bool)
 end})
 Admin2.addCommand({name = "sit",desc = "Sits your character",callback = function(bool)
-    if Noclipping then
-		Noclipping:Disconnect()
-	end
-	Clip = true
-	LocalPlayer.Character.HumanoidRootPart.CanCollide = false
-	game.Players.LocalPlayer.Character.Humanoid.Sit = true
+    game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated, true)
+    game.Players.LocalPlayer.Character.Humanoid.Sit = true
     print(bool)
+end})
+Admin2.addCommand({name = "admin",desc = "Displays the name of the Admin",callback = function(b)
+    game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer("[ > Anarky's Private Admin <] (v2)","All")
+
 end})
 Admin2.addCommand({name = "fixcam",desc = "Fixes your Camera",callback = function(bool)
     workspace.CurrentCamera:remove()
@@ -1735,6 +1776,148 @@ Admin2.addCommand({name = "tfling",desc = "Enables tool fling",callback = functi
             end
         end
     end)
+end})
+Admin2.addCommand({name = "void",desc = "Voids the target",callback = function(v,b)
+    local t = Admin2.getplayers(v)
+    for i,v2 in pairs(t) do
+        pcall(function()
+            local LocalPlayer = game.Players.LocalPlayer
+        local newHum = LocalPlayer.Character.Humanoid:Clone()
+        newHum.Parent = LocalPlayer.Character
+        LocalPlayer.Character.Humanoid:Destroy()
+        for i,v in next, LocalPlayer.Backpack:GetChildren() do
+            if v:IsA'Tool' then
+                v.Parent = LocalPlayer.Character
+            end
+        end
+        local tool = LocalPlayer.Character:FindFirstChildOfClass'Tool'
+        local pos = LocalPlayer.Character.HumanoidRootPart.CFrame
+        firetouchinterest(tool.Handle, v2.Character.Head, 0)
+        task.wait()
+        game.Workspace.Gravity = 5000000000000000000
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame - Vector3.new(0,400,0)
+        task.wait()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,-1000,0)
+        game.Players.LocalPlayer.CharacterAdded:Wait()
+        repeat task.wait() until LocalPlayer.Character
+        game.Workspace.Gravity = 200
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+        end)
+    end
+    if b then
+        local m = Instance.new("Message",workspace)
+        m.Text = "Cheese!"
+        wait(1)
+        m:Destroy()
+    end
+end})
+Admin2.addCommand({name = "netlag",desc = "Lags the target (if net in use)",callback = function(v,b)
+    local t = Admin2.getplayers(v)
+    for i,v2 in pairs(t) do
+        pcall(function()
+            local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+
+local Player = Players.LocalPlayer
+
+
+local TargetMetaVars = {}
+
+TargetMetaVars["TPlayer"] = GetPlayer(v2)
+TargetMetaVars["TCharacter"] = TargetMetaVars["TPlayer"].Character or false
+
+local ErrorCheck = false
+
+for _,x in next, TargetMetaVars do
+    if not x then
+        ErrorCheck = true
+    end
+end
+
+if ErrorCheck then return end
+
+local Set_Hidden = sethiddenproperty
+
+while RunService.Stepped:wait() do
+    for _,x in next, TargetMetaVars.TCharacter:GetDescendants() do
+        if x:IsA("BasePart") then
+            Set_Hidden(x, "NetworkIsSleeping", true)
+        end
+    end
+end
+        end)
+    end
+    if b then
+        local m = Instance.new("Message",workspace)
+        m.Text = "Cheese!"
+        wait(1)
+        m:Destroy()
+    end
+end})
+Admin2.addCommand({name = "view",desc = "Views your lovely target",callback = function(v,b)
+    local t = Admin2.getplayers(v)
+    for i,v2 in pairs(t) do
+        pcall(function()
+            workspace.CurrentCamera.CameraSubject = v2.Character.Humanoid
+            end)
+        
+    end
+    if b then
+        local m = Instance.new("Message",workspace)
+        m.Text = "Cheese!"
+        wait(1)
+        m:Destroy()
+    end
+end})
+Admin2.addCommand({name = "fkill",desc = "Fast version of kill",callback = function(v,b)
+    local t = Admin2.getplayers(v)
+    for i,v2 in pairs(t) do
+        pcall(function()
+            local LocalPlayer = game.Players.LocalPlayer
+            local ogChar = LocalPlayer.Character
+            LocalPlayer.Character = Clone
+            LocalPlayer.Character = ogChar
+            task.wait(4.6)
+            local newHum = LocalPlayer.Character.Humanoid:Clone()
+            newHum.Parent = LocalPlayer.Character
+            LocalPlayer.Character.Humanoid:Destroy()
+            newHum:ChangeState(15)
+            for i,v in next, LocalPlayer.Backpack:GetChildren() do
+                if v:IsA'Tool' then
+                    v.Parent = LocalPlayer.Character
+                end
+            end
+            local pos = LocalPlayer.Character.HumanoidRootPart.CFrame
+            local tool = LocalPlayer.Character:FindFirstChildOfClass'Tool'
+            firetouchinterest(tool.Handle, v2.Character.Head, 0)
+            tool.AncestryChanged:Wait()
+            LocalPlayer.Character:BreakJoints()
+            game.Players.LocalPlayer.CharacterAdded:Wait()
+            tool:Destroy()
+            repeat task.wait() until LocalPlayer.Character
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+        end)
+    end
+    if b then
+        local m = Instance.new("Message",workspace)
+        m.Text = "Cheese!"
+        wait(1)
+        m:Destroy()
+    end
+end})
+Admin2.addCommand({name = "vkill",desc = "Void Kills the target",callback = function(v,b)
+    local t = Admin2.getplayers(v)
+    for i,v2 in pairs(t) do
+        pcall(function()
+                
+        end)
+    end
+    if b then
+        local m = Instance.new("Message",workspace)
+        m.Text = "Cheese!"
+        wait(1)
+        m:Destroy()
+    end
 end})
 Admin2.addCommand({name = "goto",desc = "Teleports you to the target",callback = function(v,b)
     local t = Admin2.getplayers(v)
