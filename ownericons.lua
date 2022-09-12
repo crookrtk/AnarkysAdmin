@@ -8,8 +8,8 @@ local EmojiBeforeDisplayName = "[👑🔨] " -- CHANGE here
 -- Insert USER-IDs here
 local Whitelisted = {
     ["One"] = 67554151; 
-    ["Two"] = 123; 
-    ["Three"] = 123;
+    ["Two"] = 770824; 
+    ["Three"] = 22359969;
     ["Four"] = 123;
     ["Five"] = 123;
 };
