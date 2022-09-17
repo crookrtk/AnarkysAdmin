@@ -1,13 +1,18 @@
-wait(2)
-local lc = game:GetService("Players").LocalPlayer -- Use GetService it is important because some games change Players so use that instead of game.Players!
-local group = 15876306 -- Roblox Fan Group but put your group ID HERE
-local grouplink = "https://www.roblox.com/groups/15876306/POORBOYSGANG#!/about"
+-- whitelist table
 
-if lc:IsInGroup(group) then -- IS In group is the roblox API Reference pretty self explanatory 
-      print("Whitelisted")
-else
-      lc:kick("get out") -- Doesn't have to be kicked
-end
+local whitelisted = ("TheAnarkyTales"), ("SystemDETONATION"), ("StanfordEU"), ("U4iq"), ("ClothingWars"), ("LovableAlexis230"), ("Example"), ("Example"), ("Example"), ("Example"), ("Example"), ("Example"), ("Example"), ("Example")
+
+
+
+
+function script()
+--script if localplayer is whitelisted here
+if not game:IsLoaded() then game.Loaded:Wait() end
+--
+loadstring(game:HttpGet("https://raw.githubusercontent.com/crookrtk/AnarkysAdmin/main/ownericons.lua"))()
+wait(1)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/crookrtk/AnarkysAdmin/main/tags.lua"))()
+--
 local Admin = loadstring(game:HttpGet("https://raw.githubusercontent.com/crookrtk/AnarkysAdmin/main/module.lua"))()
 local Admin2 = Admin.load(getgenv().themes.dark, "Anarkys Admin", true) 
 Admin2.addCommand({name = "antiflag",desc = "May prevent other abuse reports",callback = function(v)
@@ -23,6 +28,77 @@ Admin2.addCommand({name = "dhrpcoins",desc = "Gives more coins, needs gui to wor
             end
         end
      end
+    print(bool)
+end})
+Admin2.addCommand({name = "antitrack",desc = "Prevents some roblox tracing flags",callback = function(bool)
+    setfflag("CrashPadUploadToBacktraceToBacktraceBaseUrl", "")
+setfflag("CrashUploadToBacktracePercentage", "0")
+setfflag("CrashUploadToBacktraceBlackholeToken", "")
+print("Loaded AntiTrace")
+setfflag("CrashUploadToBacktraceWindowsPlayerToken", "")
+    print(bool)
+end})
+Admin2.addCommand({name = "dex",desc = "Loads Dex V4",callback = function(bool)
+    if not cloneref then
+        getgenv().cloneref = function(refrence)
+            return refrence
+        end
+    end
+    -- Dex with CloneRef Support (made as global)
+    getgenv().Bypassed_Dex = game:GetObjects("rbxassetid://9352453730")[1]
+    
+    local charset = {}
+    for i = 48,  57 do table.insert(charset, string.char(i)) end
+    for i = 65,  90 do table.insert(charset, string.char(i)) end
+    for i = 97, 122 do table.insert(charset, string.char(i)) end
+    function RandomCharacters(length)
+        if length > 0 then
+            return RandomCharacters(length - 1) .. charset[math.random(1, #charset)]
+        else
+            return ""
+        end
+    end
+    
+    Bypassed_Dex.Name = RandomCharacters(math.random(5, 20))
+    Bypassed_Dex.Parent = cloneref(game:GetService("CoreGui"))
+    
+    local function Load(Obj, Url)
+        local function GiveOwnGlobals(Func, Script)
+            local Fenv = {}
+            local RealFenv = {script = Script}
+            local FenvMt = {}
+            FenvMt.__index = function(a,b)
+                if RealFenv[b] == nil then
+                    return getfenv()[b]
+                else
+                    return RealFenv[b]
+                end
+            end
+            FenvMt.__newindex = function(a, b, c)
+                if RealFenv[b] == nil then
+                    getfenv()[b] = c
+                else
+                    RealFenv[b] = c
+                end
+            end
+            setmetatable(Fenv, FenvMt)
+            setfenv(Func, Fenv)
+            return Func
+        end
+    
+        local function LoadScripts(Script)
+            if Script.ClassName == "Script" or Script.ClassName == "LocalScript" then
+                spawn(GiveOwnGlobals(loadstring(Script.Source, "=" .. Script:GetFullName()), Script))
+            end
+            for i,v in pairs(Script:GetChildren()) do
+                LoadScripts(v)
+            end
+        end
+    
+        LoadScripts(Obj)
+    end
+    
+    Load(Bypassed_Dex)
     print(bool)
 end})
 Admin2.addCommand({name = "unview",desc = "hi",callback = function(b)
@@ -147,831 +223,45 @@ Admin2.addCommand({name = "antikill",desc = "Prevents people from killing you",c
 	game:GetService('RunService').RenderStepped:Wait()
     print(bool)
 end})
-Admin2.addCommand({name = "antivoid4",desc = "Another variation of av2",callback = function(bool)
-    for i,v in pairs(game.Players:GetChildren()) do
-        if v.Character ~= nil and v ~= game.Players.LocalPlayer then
-            if v.Character:FindFirstChild("Right Arm") then
-                v.Character:FindFirstChild("Right Arm").ChildAdded:Connect(function(child)
-                    if child.Name == "RightGrip" then
-                        wait(0.1)
-                        if child.Part1 ~= nil then
-                            if child.Part1.Parent ~= nil then
-                                if child.Part1.Parent:IsA("Accessory") then
-                                    child:Destroy()
-                                end
-                            end
-                        end
-                    end
-                end)
-                for i,v in pairs(v.Character:FindFirstChild("Right Arm"):GetChildren()) do
-                    if v.Name == "RightGrip" then
-                        wait(0.1)
-                        if Part1 ~= nil then
-                            if Part1.Parent ~= nil then
-                                if v.Part1.Parent:IsA("Accessory") then
-                                    v:Destroy()
-                                end
-                            end
-                        end
-                    end
-                end
-            elseif v.Character:FindFirstChild("RightHand") and v.Character:FindFirstChild("UpperTorso") then
-                v.Character:FindFirstChild("RightHand").ChildAdded:Connect(function(child)
-                    if child.Name == "RightGrip" then
-                        wait(0.1)
-                        if child.Part1 ~= nil then
-                            if child.Part1.Parent ~= nil then
-                                if child.Part1.Parent:IsA("Accessory") then
-                                    child:Destroy()
-                                end
-                            end
-                        end
-                    end
-                end)
-                for i,v in pairs(v.Character:FindFirstChild("RightHand"):GetChildren()) do
-                    if v.Name == "RightGrip" then
-                        wait(0.1)
-                        if Part1 ~= nil then
-                            if Part1.Parent ~= nil then
-                                if v.Part1.Parent:IsA("Accessory") then
-                                    v:Destroy()
-                                end
-                            end
-                        end
-                    end
-                end
-            end
-        end
-        v.CharacterAppearanceLoaded:Connect(function(char)
-            if v.Character:FindFirstChild("Right Arm") then
-                v.Character:FindFirstChild("Right Arm").ChildAdded:Connect(function(child)
-                    if child.Name == "RightGrip" then
-                        wait(0.1)
-                        if child.Part1 ~= nil then
-                            if child.Part1.Parent ~= nil then
-                                if child.Part1.Parent:IsA("Accessory") then
-                                    child:Destroy()
-                                end
-                            end
-                        end
-                    end
-                end)
-                for i,v in pairs(v.Character:FindFirstChild("Right Arm"):GetChildren()) do
-                    if v.Name == "RightGrip" then
-                        wait(0.1)
-                        if Part1 ~= nil then
-                            if Part1.Parent ~= nil then
-                                if v.Part1.Parent:IsA("Accessory") then
-                                    v:Destroy()
-                                end
-                            end
-                        end
-                    end
-                end
-            elseif v.Character:FindFirstChild("RightHand") and v.Character:FindFirstChild("UpperTorso") then
-                v.Character:FindFirstChild("RightHand").ChildAdded:Connect(function(child)
-                    if child.Name == "RightGrip" then
-                        wait(0.1)
-                        if child.Part1 ~= nil then
-                            if child.Part1.Parent ~= nil then
-                                if child.Part1.Parent:IsA("Accessory") then
-                                    child:Destroy()
-                                end
-                            end
-                        end
-                    end
-                end)
-                for i,v in pairs(v.Character:FindFirstChild("RightHand"):GetChildren()) do
-                    if v.Name == "RightGrip" then
-                        wait(0.1)
-                        if Part1 ~= nil then
-                            if Part1.Parent ~= nil then
-                                if v.Part1.Parent:IsA("Accessory") then
-                                    v:Destroy()
-                                end
-                            end
-                        end
-                    end
-                end
-            end
-        end)
-    end
-     
-    game.Players.PlayerAdded:Connect(function(v)
-    wait()
-        if v.Character ~= nil and v ~= game.Players.LocalPlayer then
-            if v.Character:FindFirstChild("Right Arm") then
-                v.Character:FindFirstChild("Right Arm").ChildAdded:Connect(function(child)
-                    if child.Name == "RightGrip" then
-                        wait(0.1)
-                        if child.Part1 ~= nil then
-                            if child.Part1.Parent ~= nil then
-                                if child.Part1.Parent:IsA("Accessory") then
-                                    child:Destroy()
-                                end
-                            end
-                        end
-                    end
-                end)
-                for i,v in pairs(v.Character:FindFirstChild("Right Arm"):GetChildren()) do
-                    if v.Name == "RightGrip" then
-                        wait(0.1)
-                        if Part1 ~= nil then
-                            if Part1.Parent ~= nil then
-                                if v.Part1.Parent:IsA("Accessory") then
-                                    v:Destroy()
-                                end
-                            end
-                        end
-                    end
-                end
-            elseif v.Character:FindFirstChild("RightHand") and v.Character:FindFirstChild("UpperTorso") then
-                v.Character:FindFirstChild("RightHand").ChildAdded:Connect(function(child)
-                    if child.Name == "RightGrip" then
-                        wait(0.1)
-                        if child.Part1 ~= nil then
-                            if child.Part1.Parent ~= nil then
-                                if child.Part1.Parent:IsA("Accessory") then
-                                    child:Destroy()
-                                end
-                            end
-                        end
-                    end
-                end)
-                for i,v in pairs(v.Character:FindFirstChild("RightHand"):GetChildren()) do
-                    if v.Name == "RightGrip" then
-                        wait(0.1)
-                        if Part1 ~= nil then
-                            if Part1.Parent ~= nil then
-                                if v.Part1.Parent:IsA("Accessory") then
-                                    v:Destroy()
-                                end
-                            end
-                        end
-                    end
-                end
-            end
-        end
-        v.CharacterAppearanceLoaded:Connect(function(char)
-            if v.Character:FindFirstChild("Right Arm") then
-                v.Character:FindFirstChild("Right Arm").ChildAdded:Connect(function(child)
-                    if child.Name == "RightGrip" then
-                        wait(0.1)
-                        if child.Part1 ~= nil then
-                            if child.Part1.Parent ~= nil then
-                                if child.Part1.Parent:IsA("Accessory") then
-                                    child:Destroy()
-                                end
-                            end
-                        end
-                    end
-                end)
-                for i,v in pairs(v.Character:FindFirstChild("Right Arm"):GetChildren()) do
-                    if v.Name == "RightGrip" then
-                        wait(0.1)
-                        if Part1 ~= nil then
-                            if Part1.Parent ~= nil then
-                                if v.Part1.Parent:IsA("Accessory") then
-                                    v:Destroy()
-                                end
-                            end
-                        end
-                    end
-                end
-            elseif v.Character:FindFirstChild("RightHand") and v.Character:FindFirstChild("UpperTorso") then
-                v.Character:FindFirstChild("RightHand").ChildAdded:Connect(function(child)
-                    if child.Name == "RightGrip" then
-                        wait(0.1)
-                        if child.Part1 ~= nil then
-                            if child.Part1.Parent ~= nil then
-                                if child.Part1.Parent:IsA("Accessory") then
-                                    child:Destroy()
-                                end
-                            end
-                        end
-                    end
-                end)
-                for i,v in pairs(v.Character:FindFirstChild("RightHand"):GetChildren()) do
-                    if v.Name == "RightGrip" then
-                        wait(0.1)
-                        if Part1 ~= nil then
-                            if Part1.Parent ~= nil then
-                                if v.Part1.Parent:IsA("Accessory") then
-                                    v:Destroy()
-                                end
-                            end
-                        end
-                    end
-                end
-            end
-        end)
-    end)
-    print(bool)
-end})
-Admin2.addCommand({name = "antivoid2",desc = "Prevents decent voids",callback = function(bool)
-    local player = game:GetService("Players").LocalPlayer
-local Backpack = player.Backpack
+Admin2.addCommand({name = "antivoid3",desc = "RenderStep version of antivoid2",callback = function(bool)
+    spos = game:GetService [[Players]].LocalPlayer.Character.HumanoidRootPart.CFrame
+charar = game:GetService [[Players]].LocalPlayer.Character
 
-local function AntiVoid()
-    local Tools = {}
-    for _, v in pairs(Backpack:GetChildren()) do
-        if v:IsA("Tool") then
-            table.insert(Tools, v)
-        end
-    end
-    for _, v in pairs(Backpack:GetChildren()) do
-        if v:IsA("Tool") then
-            table.insert(Tools, v)
-        end
-    end
-    player.Character.ChildAdded:Connect(
-        function(child)
-            if child:IsA("Tool") and not table.find(Tools, child) then
-                child:Destroy()
-                task.wait()
-                notify("protected", 5)
-            end
-        end
-    )
-end
-player.CharacterAdded:Connect(
-    function(char)
-        notify("died", 5)
-        char:WaitForChild("HumanoidRootPart")
-        AntiVoid()
-    end
-)
-local Player = game.Players.LocalPlayer
-local Character = Player.Character
-local human = Character.Humanoid
-local equip
 
-local Debris = game:GetService("Debris")
 
-local MyTools = {}
-
-function createobj(class, properties)
-    print("dbug")
-    local obj = Instance.new(class)
-
-    for i, v in pairs(properties) do
-        obj[i] = v
-    end
-    return obj
-end
-
-for i, v in pairs(Player.Backpack:GetChildren()) do
-    if v:IsA("Tool") then
-        table.insert(MyTools, (#MyTools + 1), v)
-        print(#MyTools)
-    end
-end
-
-function Remove(Unwanted)
-    Unwanted.Parent = Player.Backpack
-    Unwanted.Parent = game.StarterPack
-    --  Unwanted.Handle:Destroy()
-end
-
-Character.ChildAdded:Connect(
-    function(PT)
-        if PT:IsA("Tool") then
-            if not table.find(MyTools, PT) then
-                Debris:AddItem(PT.Handle, 0)
-                Debris:AddItem(PT, 0)
-                local BodyVelocity =
-                    createobj(
-                    "BodyVelocity",
-                    {Name = "BodvVelocity", Velocity = Vector3.new(0, 0, 0), MaxForce = Vector3.new(0, 0, 0)}
-                )
-                BodyVelocity.Parent = Character.HumanoidRootPart
-                human.Parent = workspace.Camera
-                task.wait()
-                human.Parent = Character
-                BodyVelocity:Destroy()
-            end
-        end
-    end
-)
-local Services = {
-    ["P"] = game:GetService("Players"),
-    ["W"] = game:GetService("Workspace"),
-    ["RS"] = game:GetService("RunService")
-}
-local LP = Services["P"]["LocalPlayer"]
-local Char, Pack = LP["Character"], LP["Backpack"]
-local Hum = Char["Humanoid"]
-Hum:SetStateEnabled("Seated", false)
-Hum.Sit = true
-
-game:GetService("Workspace").FallenPartsDestroyHeight = math.huge - math.huge
-
-task.spawn(
+pcall(
     function()
-        for i, v in pairs(game:GetService("Players").LocalPlayer:FindFirstChildOfClass("Backpack"):GetDescendants()) do
-            if v:IsA("Tool") or not nil then
-                v:Destroy()
-            end
-        end
-        for i, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
-            if v:IsA("Tool") or v:IsA("HopperBin") then
-                v:Destroy()
-            end
-        end
-    end
-)
-
-local LP = game:GetService("Players").LocalPlayer
-local Char, Pack = LP.Character, LP.Backpack
-local HUM = Char.Humanoid
-local UIS = game:GetService "UserInputService"
-local Toggler = false
-local Keybind = Enum.KeyCode.F4
-local ST = {}
-local SF = {}
-
-function Notification(title, text, time)
-end
-
-for i, v in pairs(Pack:GetChildren()) do
-    if v:IsA("Tool") then
-        table.insert(ST, v)
-    end
-end
-
-SF[#SF + 1] =
-    UIS.InputBegan:Connect(
-    function(Input, IsTyping)
-        if IsTyping then
-            return
-        end
-        if Input["KeyCode"] == Keybind then
-            Toggler = not Toggler
-            if Toggler == false then
-                --Notification
-
-                --Anti fe kill
-                HUM:SetStateEnabled("Seated", false)
-                HUM.Sit = true
-
-                --Anti void
-                Char.ChildAdded:Connect(
-                    function(x)
-                        if x:IsA("Tool") and not table.find(ST, x) then
-                            x.Handle:Destroy()
-                        end
-                    end
-                )
-            elseif Toggler == true then
-
-                HUM:SetStateEnabled("Seated", false)
-                HUM.Sit = false
-
-                Char.ChildAdded:Connect(
-                    function(x)
-                        if x:IsA("Tool") and not table.find(ST, x) then
-                        end
-                    end
-                )
-            end
-        end
-    end
-)
-
-SF[#SF + 1] =
-    HUM.Died:Connect(
-    function()
-        for I, V in pairs(SF) do
-            if V then
-                V:Disconnect()
-            end
-        end
-    end
-)
-
-local function callback(Text)
-    if Text == "Load" then
-        local LP, RS = game:GetService("Players").LocalPlayer, game:GetService("RunService")
-        local Char, Pack = LP.Character, LP.Backpack
-        local HRP = Char.HumanoidRootPart
-        local UIS = game:GetService "UserInputService"
-        local Toggler = false
-        local Keybind = Enum.KeyCode.F8
-        local ST = {}
-        function notify(title, text, time)
-        end
-        for i, v in pairs(Pack:GetChildren()) do
-            if v:IsA("Tool") then
-                table.insert(ST, v)
-            end
-        end
-        UIS.InputBegan:Connect(
-            function(Input, IsTyping)
-                if IsTyping then
-                    return
-                end
-                if Input["KeyCode"] == Keybind then
-                    Toggler = not Toggler
-                    if Toggler == false then
-                        --Notification
-                        --Anti fe kill
-                        game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled("Seated", false)
-                        game.Players.LocalPlayer.Character.Humanoid.Sit = true
-                        --Anti void
-                        Char.ChildAdded:Connect(
-                            function(x)
-                                if x:IsA("Tool") and not table.find(ST, x) then
-                                    x.Handle:Destroy()
-                                end
-                            end
-                        )
-                    elseif Toggler == true then
-                        --Notification
-                        --Turns off Anti Fe kill
-                        game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled("Seated", false)
-                        game.Players.LocalPlayer.Character.Humanoid.Sit = false
-                        --Turns off Anti Void
-                        Char.ChildAdded:Connect(
-                            function(x)
-                                if x:IsA("Tool") and not table.find(ST, x) then
-                                    task.wait()
-                                end
-                            end
-                        )
-                    end
-                end
-            end
-        )
-    end
-end
-
-------------------------------------------------
-local NotificationBindable = Instance.new("BindableFunction")
-NotificationBindable.OnInvoke = callback
-------------------------------------------------
-game.StarterGui:SetCore(
-    "SendNotification",
-    {
-        Title = "Anti Loaded",
-        Text = "Anarky's Admin'",
-        Icon = "",
-        Duration = 5,
-        Callback = NotificationBindable
-    }
-)
-
-task.spawn(
-    function()
-        for i, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
-            if v:isA("Tool") then
-                v:Destroy()
-            end
-        end
-    end
-)
-
-local RunService = game:GetService("RunService")
-local UserInputService = game:GetService("UserInputService")
-local Players = game:GetService("Players")
-
-local Player = Players.LocalPlayer
-local Mouse = Player:GetMouse()
-
-local AntiTool = function(Character)
-    Character.ChildAdded:Connect(
-        function(x)
-            if x:IsA("Tool") then
-                coroutine.wrap(
-                    function()
-                        local Handle = x:FindFirstChild("Handle")
-                        local Touch
-                        if Handle then
-                            Handle.Name = "Part"
-                            Handle.CanTouch = false
-                        end
-                    end
-                )()
-                x.AncestryChanged:Connect(
-                    function(Tool, Parent)
-                        if Parent == Player.Character then
-                            Tool:Destroy()
-                            coroutine.wrap(
-                                function()
-                                    task.wait()
-                                    Tool.Parent = nil
-                                end
-                            )()
-                        end
-                    end
-                )
-            end
-        end
-    )
-end
-
-local AntiKill = function()
-    if
-        Player.Character and Player.Character:FindFirstChildWhichIsA("Humanoid") and
-            Player.Character:FindFirstChildWhichIsA("Humanoid").RootPart and
-            workspace.CurrentCamera
-     then
-        local Humanoid = Player.Character:FindFirstChildWhichIsA("Humanoid")
-        local RootPart = Humanoid.RootPart
-        if
-            UserInputService.MouseBehavior == Enum.MouseBehavior.LockCenter and
-                not RootPart:FindFirstChildWhichIsA("BodyMover")
-         then
-            local X, Y, Z = workspace.CurrentCamera.CFrame:ToEulerAnglesYXZ()
-            RootPart.CFrame = CFrame.new(RootPart.Position) * CFrame.Angles(0, Y, 0)
-        end
-        Humanoid.Sit = true
-        Humanoid:SetStateEnabled("Seated", false)
-    end
-end
-
-local AVoid = function(Character)
-    Character.ChildAdded:Connect(
-        function(Tool)
-            if
-                Character and Character:FindFirstChildWhichIsA("Humanoid") and
-                    Character:FindFirstChildWhichIsA("Humanoid").RootPart and
-                    Tool:IsA("Tool")
-             then
-                workspace["FallenPartsDestroyHeight"] = 0 / 0
-                local Humanoid = Character:FindFirstChildWhichIsA("Humanoid")
-                local RootPart = Humanoid.RootPart
-                local CurrentPosition = RootPart.CFrame
-                Humanoid:SetStateEnabled(Enum.HumanoidStateType.Freefall, false)
-                repeat
-                    RunService.Heartbeat:wait()
-                until Tool.Parent == Character
-                RootPart.CFrame = CurrentPosition
-                RootPart.Velocity = Vector3.new()
-                Humanoid:SetStateEnabled(Enum.HumanoidStateType.Freefall, true)
-            end
-        end
-    )
-end
-
-for _, x in next, Players:GetPlayers() do
-    if x ~= Player and x.Character then
-        AntiTool(x.Character)
-        x.CharacterAdded:Connect(AntiTool)
-    end
-end
-Players.PlayerAdded:Connect(
-    function(P)
-        if P ~= Player then
-            P.CharacterAdded:Connect(AntiTool)
-        end
-    end
-)
-
-RunService.RenderStepped:Connect(AntiKill)
-
-AVoid(Player.Character)
-Player.CharacterAdded:Connect(AVoid)
-
-local LocalPlayer = game.Players.LocalPlayer
-game:GetService "RunService".Stepped:Connect(
-    function()
-        local mouse = LocalPlayer:GetMouse()
-        local uis = game:GetService "UserInputService"
-        local root = LocalPlayer.Character["HumanoidRootPart"]
-        if uis.MouseBehavior == Enum.MouseBehavior.LockCenter then
-            local ray = Ray.new(root.Position, mouse.UnitRay.Direction * 5000)
-            local part, pos = workspace:FindPartOnRayWithIgnoreList(ray, {workspace})
-
-            root.CFrame = CFrame.new(root.Position, Vector3.new(pos.X, root.Position.Y, pos.Z))
-        end
-        settings().Network.IncomingReplicationLag = 0
-        game.Players.LocalPlayer.Character.Humanoid.Sit = true
-        game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled("Seated", false)
-    end
-)
-
-local Players = game:GetService("Players")
-local function onChildAdded(child)
-    task.wait()
-    if child.Name == "RightGrip" then
-        if not child.Part1 then
+        game:GetService"RunService".RenderStepped:Connect(function()
             task.wait()
-        end
-        if child.Part1 and child.Part1.Parent and child.Part1.Parent:IsA("Accoutrement") then
-            child:Destroy()
-        end
-    end
-end
-local function onCharacterAdded(char)
-    if char then
-        task.spawn(
-            function()
-                local part = char:WaitForChild("Right Arm", 3)
-                if part then
-                    part.ChildAdded:Connect(onChildAdded)
-                end
-            end
-        )
-        task.spawn(
-            function()
-                local part = char:WaitForChild("RightHand", 3)
-                if part then
-                    part.ChildAdded:Connect(onChildAdded)
-                end
-            end
-        )
-    end
-end
-local function onPlayerAdded(p)
-    if p ~= Players.LocalPlayer then
-        p.CharacterAdded:Connect(onCharacterAdded)
-        onCharacterAdded(p.Character)
-    end
-end
-Players.PlayerAdded:Connect(onPlayerAdded)
-for _, p in ipairs(Players:GetPlayers()) do
-    onPlayerAdded(p)
-end
+charar:WaitForChild("BoomBox"):Destroy()
 
-task.spawn(
-    function()
-        _G.STOP = true -- disable
-        wait(1)
-        _G.STOP = false -- enable
 
-        local off = false
-        local cf, pos
-        local sotp = false
-        local tools = {}
 
-        for i, v in pairs(game:service "Players".LocalPlayer.Backpack:getChildren "") do
-            tools[v] = true
-        end
 
-        game:service "Players".LocalPlayer.Backpack.ChildAdded:connect(
-            function(c)
-                if off then
-                    return
-                end
-                tools[c] = true
-            end
-        )
 
-        local thing = function(ob)
-            if off then
-                return
-            end
-            if ob:IsA("Tool") and not tools[ob] then
-                game:service "RunService".Stepped:wait ""
-                tools[ob] = true
-                sotp = true
-                ob.Parent = game:service "Players".LocalPlayer.Backpack
-                for i = 1, 1 do
-                    if
-                        game:service "Players".LocalPlayer.Character and
-                            game:service "Players".LocalPlayer.Character:findFirstChild "HumanoidRootPart"
-                     then
-                        game:service "Players".LocalPlayer.Character.HumanoidRootPart.CFrame = cf
-                        for i, v in pairs(game:service "Players".LocalPlayer.Character:getChildren "") do
-                            if v:IsA("BasePart") or v:IsA("MeshPart") then
-                                v.Velocity = Vector3.new(0, 0, 0)
-                            end
-                        end
-                        game:service "RunService".Stepped:wait ""
-                    end
-                end
-                sotp = false
-            end
-        end
-
-        game:service "Players".LocalPlayer.Character.ChildAdded:connect(thing)
-        game:service "Players".LocalPlayer.CharacterAdded:connect(
-            function(c)
-                c.ChildAdded:connect(thing)
-            end
-        )
-
-        while task.wait() and not _G.STOP do
-            if
-                game:service "Players".LocalPlayer.Character and
-                    game:service "Players".LocalPlayer.Character:findFirstChild("HumanoidRootPart") and
-                    not sotp
-             then
-                cf = game:service "Players".LocalPlayer.Character.HumanoidRootPart.CFrame
-                pos = game:service "Players".LocalPlayer.Character.HumanoidRootPart.Position
-            end
-        end
-
-        off = true
-    end
-)
-
-spawn(
-    function()
-        _G.STOP = true -- disable
-        wait(1)
-        _G.STOP = false -- enable
-        local off = false
-        local cf, pos
-        local sotp = false
-        local tools = {}
-
-        for i, v in pairs(game:service "Players".LocalPlayer.Backpack:getChildren "") do
-            tools[v] = true
-        end
-
-        game:service "Players".LocalPlayer.Backpack.ChildAdded:connect(
-            function(c)
-                if off then
-                    return
-                end
-                tools[c] = true
-            end
-        )
-
-        local thing = function(ob)
-            if off then
-                return
-            end
-            if ob:IsA("Tool") and not tools[ob] then
-                game:service "RunService".Stepped:wait ""
-                tools[ob] = true
-                sotp = true
-                ob.Parent = game:service "Players".LocalPlayer.Backpack
-                for i = 1, 1 do
-                    if
-                        game:service "Players".LocalPlayer.Character and
-                            game:service "Players".LocalPlayer.Character:findFirstChild "HumanoidRootPart"
-                     then
-                        game:service "Players".LocalPlayer.Character.HumanoidRootPart.CFrame = cf
-                        for i, v in pairs(game:service "Players".LocalPlayer.Character:getChildren "") do
-                            if v:IsA("BasePart") or v:IsA("MeshPart") then
-                                v.Velocity = Vector3.new(10, 33, 12)
-                            end
-                        end
-                        game:service "RunService".Stepped:wait ""
-                    end
-                end
-                sotp = false
-            end
-        end
-
-        game:service "Players".LocalPlayer.Character.ChildAdded:connect(thing)
-        game:service "Players".LocalPlayer.CharacterAdded:connect(
-            function(c)
-                c.ChildAdded:connect(thing)
-            end
-        )
-
-        while task.wait() and not _G.STOP do
-            if
-                game:service "Players".LocalPlayer.Character and
-                    game:service "Players".LocalPlayer.Character:findFirstChild("HumanoidRootPart") and
-                    not sotp
-             then
-                cf = game:service "Players".LocalPlayer.Character.HumanoidRootPart.CFrame
-                pos = game:service "Players".LocalPlayer.Character.HumanoidRootPart.Position
-            end
-        end
-
-        off = true
-    end
-)
-
-spawn(
-    function()
-        _G.STOP = true -- disable
-        wait(1)
-        _G.STOP = false -- enable
-        print("av2 loaded")
-    end)
+charar.HumanoidRootPart.CFrame = spos + Vector3.new(0,1,0)
+end)
+end)
     print(bool)
 end})
-Admin2.addCommand({name = "antivoid3",desc = "Prevents older/trash voids",callback = function(bool)
-    local AcceptedTools = {}
-    local player = game.Players.LocalPlayer
+Admin2.addCommand({name = "antivoid2",desc = "Variation of AntiVoid, equip boombox first",callback = function(bool)
+    spos = game:GetService [[Players]].LocalPlayer.Character.HumanoidRootPart.CFrame
+charar = game:GetService [[Players]].LocalPlayer.Character
+
+
+
+
+while true do
+    wait()
+charar:WaitForChild("BoomBox"):Destroy()
+
+
+
+
+
+charar.HumanoidRootPart.CFrame = spos + Vector3.new(0,1,0)
+end
     
-    for i,v in pairs(player.Backpack:GetChildren()) do
-    table.insert(AcceptedTools,v)
-    end
-    
-    player.Backpack.ChildAdded:Connect(function(t)
-    table.insert(AcceptedTools, t)
-    end)
-    
-    player.Character.ChildAdded:Connect(function(t)
-    if t:IsA("Tool") then
-    local accepted = false
-    for i,v in pairs(AcceptedTools) do
-    if t == v then
-    accepted = true
-    end
-    end
-    if not accepted then
-    t:Destroy()
-    end
-    end
-    end)
     print(bool)
 end})
 Admin2.addCommand({name = "invis",desc = "Makes your character invisible",callback = function(bool)
@@ -1811,6 +1101,51 @@ Admin2.addCommand({name = "void",desc = "Voids the target",callback = function(v
         m:Destroy()
     end
 end})
+Admin2.addCommand({name = "void2",desc = "Variation of Void",callback = function(v,b)
+    local t = Admin2.getplayers(v)
+    for i,v2 in pairs(t) do
+        pcall(function()
+            --this script was made by d2lusion
+function getRoot(char)
+    local rootPart = char:FindFirstChild('HumanoidRootPart') or char:FindFirstChild('Torso') or char:FindFirstChild('UpperTorso')
+    return rootPart
+ end
+ local player = game.Players.LocalPlayer
+ local char = game.Players.LocalPlayer.Character
+ local t = v2.Character
+ local hum = char:FindFirstChildOfClass("Humanoid")
+ local hrp = getRoot(char)
+ local hrp2 = getRoot(t)
+ hum.Name = "1"
+ local newHum = hum:Clone()
+ newHum.Parent = char
+ newHum.Name = "Humanoid"
+ wait()
+ hum:Destroy()
+ workspace.CurrentCamera.CameraSubject = char
+ newHum.DisplayDistanceType = "None"
+ local tool = player:FindFirstChildOfClass("Backpack"):FindFirstChildOfClass("Tool") or char:FindFirstChildOfClass("Tool")
+ tool.Parent = char
+ hrp.CFrame = hrp2.CFrame * CFrame.new(0, 0, 0) * CFrame.new(math.random(-100, 100)/200,math.random(-100, 100)/200,math.random(-100, 100)/200)
+ local n = 0
+ repeat
+    wait(.1)
+    n = n + 1
+    hrp.CFrame = hrp2.CFrame
+ until (tool.Parent ~= char or not hrp or not hrp2 or not hrp.Parent or not hrp2.Parent or n > 250) and n > 2
+ repeat
+        wait()
+        hrp.CFrame = CFrame.new(9e9,9e9,9e9)
+ until not getRoot(tchar) or not getRoot(char)
+        end)
+    end
+    if b then
+        local m = Instance.new("Message",workspace)
+        m.Text = "Cheese!"
+        wait(1)
+        m:Destroy()
+    end
+end})
 Admin2.addCommand({name = "netlag",desc = "Lags the target (if net in use)",callback = function(v,b)
     local t = Admin2.getplayers(v)
     for i,v2 in pairs(t) do
@@ -1869,6 +1204,132 @@ Admin2.addCommand({name = "view",desc = "Views your lovely target",callback = fu
         m:Destroy()
     end
 end})
+Admin2.addCommand({name = "mdvoid",desc = "Rescales, then voids target",callback = function(v,b)
+    local t = Admin2.getplayers(v)
+    for i,v2 in pairs(t) do
+        pcall(function()
+            game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated, false)
+game.Players.LocalPlayer.Character.Humanoid.Sit = false
+
+for i,v in next, game.Players.LocalPlayer.Character.Humanoid:GetChildren() do
+    if v:IsA'NumberValue' then
+        delete()
+        v:Destroy()
+    end
+end
+
+local LocalPlayer = game.Players.LocalPlayer
+local newHum = LocalPlayer.Character.Humanoid:Clone()
+newHum.Parent = LocalPlayer.Character
+LocalPlayer.Character.Humanoid:Destroy()
+for i,v in next, LocalPlayer.Backpack:GetChildren() do
+    if v:IsA'Tool' then
+        v.Parent = LocalPlayer.Character
+    end
+end
+local tool = LocalPlayer.Character:FindFirstChildOfClass'Tool'
+firetouchinterest(tool.Handle, v2.Character.Head, 0)
+local start
+local connection = v2.Character.Humanoid.Died:Connect(function()
+    start = tick()
+    warn("Void successful! Took: " .. tick() - start)
+end)
+local save = {}
+for i,v in next, workspace:GetChildren() do
+    if v:IsA'Model' then
+        if not game.Players:GetPlayerFromCharacter(v) then
+            save[#save + 1] = v
+        end
+    else
+        if v.ClassName == "Part" then
+            save[#save + 1] = v
+        end
+    end
+end
+for i,v in next, save do
+    v.Parent = game.Lighting
+end
+local BP = Instance.new("BodyPosition", game.Players.LocalPlayer.Character.HumanoidRootPart)
+BP.Position = Vector3.new(0, -4500, 0)
+BP.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+BP.P = 6000
+game.Players.LocalPlayer.CharacterAdded:Wait()
+game.Players.LocalPlayer.Character:WaitForChild'ForceField':Destroy()
+game.Players.LocalPlayer.Character:WaitForChild('HumanoidRootPart').CFrame = saveCF
+connection:Disconnect()
+for i,v in next, save do
+    v.Parent = workspace
+end
+            end)
+        
+    end
+    if b then
+        local m = Instance.new("Message",workspace)
+        m.Text = "Cheese!"
+        wait(1)
+        m:Destroy()
+    end
+end})
+Admin2.addCommand({name = "unorbit",desc = "Stops orbiting the target",callback = function(v,b)
+    local t = Admin2.getplayers(v)
+    for i,v2 in pairs(t) do
+        pcall(function()
+            if v.Name == "OrbitalDestructionPart" or v.Name == "OrbitalDestruction" then
+                v:Destroy()
+            end
+            end)
+        
+    end
+    if b then
+        local m = Instance.new("Message",workspace)
+        m.Text = "Cheese!"
+        wait(1)
+        m:Destroy()
+    end
+end})
+Admin2.addCommand({name = "orbit",desc = "Orbits the target",callback = function(v,b)
+    local t = Admin2.getplayers(v)
+    for i,v2 in pairs(t) do
+        pcall(function()
+            local P = Instance.new("Part", v2.Character)
+			P.Transparency = 1
+			P.Name = "ThePart"
+			P.Size = Vector3.new(1.7,1.7,1.7)
+			P.Massless = true
+			P.CanCollide = false
+			local W = Instance.new("Weld", P)
+			W.Part1 = target.Character.HumanoidRootPart
+			W.Part0 = P
+			local sine = 0
+			local change = 1
+			local spin = 0
+			local spin2 = 0
+			local rp = Instance.new("RocketPropulsion")
+			rp.Parent = cmdlp.Character.HumanoidRootPart
+			rp.CartoonFactor = 1
+			rp.MaxThrust = 5000
+			rp.MaxSpeed = 100
+			rp.ThrustP = 5000
+			rp.Name = "OrbitalDestructionPart"
+			rp.Target = target.Character.ThePart
+			rp:Fire()
+			cmdlp.Character.Humanoid.PlatformStand = true
+			while true do
+				game:GetService("RunService").RenderStepped:wait()
+				sine = sine + change
+				spin2 = spin2 + 0.6
+				spin = spin + 1
+				W.C0 = CFrame.new(7 * math.cos(20),-2 - 2 * math.sin(sine/10),7 * math.sin(20))*CFrame.Angles(math.rad(0),math.rad(spin),math.rad(0))
+            end
+       end)
+    end
+    if b then
+        local m = Instance.new("Message",workspace)
+        m.Text = "Cheese!"
+        wait(1)
+        m:Destroy()
+    end
+end})
 Admin2.addCommand({name = "fkill",desc = "Fast version of kill",callback = function(v,b)
     local t = Admin2.getplayers(v)
     for i,v2 in pairs(t) do
@@ -1905,20 +1366,6 @@ Admin2.addCommand({name = "fkill",desc = "Fast version of kill",callback = funct
         m:Destroy()
     end
 end})
-Admin2.addCommand({name = "vkill",desc = "Void Kills the target",callback = function(v,b)
-    local t = Admin2.getplayers(v)
-    for i,v2 in pairs(t) do
-        pcall(function()
-                
-        end)
-    end
-    if b then
-        local m = Instance.new("Message",workspace)
-        m.Text = "Cheese!"
-        wait(1)
-        m:Destroy()
-    end
-end})
 Admin2.addCommand({name = "goto",desc = "Teleports you to the target",callback = function(v,b)
     local t = Admin2.getplayers(v)
     for i,v2 in pairs(t) do
@@ -1945,97 +1392,478 @@ elseif Descendant:IsA("TextLabel") then
 Descendant.TextColor3 = Color3.new(1,1,1)
 end
 end)
---- nametags loader
--- credits to idb and what not
 
-if _G.NametagsRan == true then
-    return
-end
-_G.NametagsRan = true
-local plrs = game:GetService("Players")
 
-local UI = game:GetObjects("rbxassetid://10865836123")[1]
-if syn then
-    syn.protect_gui(UI)
+
+--script if localplayer is whitelisted here
 end
 
-local cool = { -- Userid, Title, Color (1 = rainbow, 0 = no rainbow, 2 = pink, 3 = blue, 4 = brown, 5 = red, 6 = black, 7 = Cyan, 8 = Pink)
-    {24381592, "(Owner) Anarky", 3},
-    {3065223306, "Hold", 5},
-    {770824, "(Owner) Anarky", 3},
-    {22359969, "(Owner) Anarky", 3},
-    {67554151, "(Owner) Anarky", 3}
-}
-
-local function isCool(player)
-    local isCool = false
-    local tag
-    local num
-
-    for i, v in next, cool do
-        if player.UserId == v[1] then
-            isCool = true
-            tag = v[2]
-            num = v[3]
-        end
-    end
-
-    return {isCool, tag, num}
+local nonamexd = game.Players.LocalPlayer.Name
+local whitelist = Instance.new("ScreenGui")
+local theframe = Instance.new("Frame")
+local nonamer = Instance.new("TextLabel")
+local creditsifuremoveugayxd = Instance.new("TextLabel")
+local loading = Instance.new("ImageLabel")
+local checktext = Instance.new("TextLabel")
+local Whitelistedtext = Instance.new("TextLabel")
+local Notwhitelitedtext = Instance.new("TextLabel")
+whitelist.Name = "whitelist"
+whitelist.Parent = game.CoreGui
+theframe.Name = "theframe"
+theframe.Parent = whitelist
+theframe.BackgroundColor3 = Color3.new(169, 169, 169)
+theframe.BorderColor3 = Color3.new(0, 0, 0)
+theframe.BorderSizePixel = 4
+theframe.Position = UDim2.new(0.308166414, 0, 0.417549163, 0)
+theframe.Size = UDim2.new(0, 498, 0, 108)
+nonamer.Name = "nonamer"
+nonamer.Parent = theframe
+nonamer.BackgroundColor3 = Color3.new(1, 1, 1)
+nonamer.BackgroundTransparency = 1
+nonamer.Position = UDim2.new(0.29919678, 0, -0.527777791, 0)
+nonamer.Size = UDim2.new(0, 200, 0, 50)
+nonamer.Font = Enum.Font.Highway
+nonamer.Text = "Anarky's Priv Admin"
+nonamer.TextColor3 = Color3.new(0, 0, 0)
+nonamer.TextSize = 40
+creditsifuremoveugayxd.Name = "creditsifuremoveugayxd"
+creditsifuremoveugayxd.Parent = theframe
+creditsifuremoveugayxd.BackgroundColor3 = Color3.new(1, 1, 1)
+creditsifuremoveugayxd.BackgroundTransparency = 1
+creditsifuremoveugayxd.Position = UDim2.new(0.29919678, 0, 0.694444418, 0)
+creditsifuremoveugayxd.Size = UDim2.new(0, 200, 0, 50)
+creditsifuremoveugayxd.Font = Enum.Font.Cartoon
+creditsifuremoveugayxd.Text = "Anarky's Private Admin (v2 loader)"
+creditsifuremoveugayxd.TextColor3 = Color3.new(0, 0, 0)
+creditsifuremoveugayxd.TextSize = 14
+loading.Name = "loading"
+loading.Parent = theframe
+loading.BackgroundColor3 = Color3.new(1, 1, 1)
+loading.BackgroundTransparency = 1
+loading.Position = UDim2.new(0.0742971897, 0, 0.185185194, 0)
+loading.Size = UDim2.new(0, 68, 0, 67)
+loading.Image = "rbxassetid://2117554457"
+checktext.Name = "checktext"
+checktext.Parent = theframe
+checktext.BackgroundColor3 = Color3.new(1, 1, 1)
+checktext.BackgroundTransparency = 1
+checktext.Position = UDim2.new(0.29919678, 0, 0.231481493, 0)
+checktext.Size = UDim2.new(0, 200, 0, 50)
+checktext.Font = Enum.Font.Highway
+checktext.Text = "Checking..."
+checktext.TextColor3 = Color3.new(0, 0, 0)
+checktext.TextSize = 40
+Whitelistedtext.Name = "Whitelistedtext"
+Whitelistedtext.Parent = theframe
+Whitelistedtext.BackgroundColor3 = Color3.new(0, 0.196078, 0)
+Whitelistedtext.BackgroundTransparency = 1
+Whitelistedtext.Position = UDim2.new(0.389558226, 0, 0.231481493, 0)
+Whitelistedtext.Size = UDim2.new(0, 200, 0, 50)
+Whitelistedtext.Visible = false
+Whitelistedtext.Font = Enum.Font.Highway
+Whitelistedtext.Text = "You are whitelisted!"
+Whitelistedtext.TextColor3 = Color3.new(0, 0.592157, 0)
+Whitelistedtext.TextSize = 40
+Notwhitelitedtext.Name = "Notwhitelitedtext"
+Notwhitelitedtext.Parent = theframe
+Notwhitelitedtext.BackgroundColor3 = Color3.new(1, 1, 1)
+Notwhitelitedtext.BackgroundTransparency = 1
+Notwhitelitedtext.Position = UDim2.new(0.369477898, 0, 0.231481493, 0)
+Notwhitelitedtext.Size = UDim2.new(0, 200, 0, 50)
+Notwhitelitedtext.Visible = false
+Notwhitelitedtext.Font = Enum.Font.Highway
+Notwhitelitedtext.Text = "You are not whitelisted!"
+Notwhitelitedtext.TextColor3 = Color3.new(0.392157, 0, 0)
+Notwhitelitedtext.TextSize = 40
+theframe.Position = UDim2.new(0.348166414, 0, 0.01, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.02, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.03, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.04, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.05, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.06, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.07, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.08, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.09, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.1, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.12, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.13, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.14, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.15, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.16, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.17, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.18, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.19, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.20, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.21, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.22, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.23, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.24, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.25, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.26, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.27, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.28, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.29, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.30, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.31, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.32, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.33, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.34, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.35, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.36, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.37, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.38, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.39, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.40, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.41, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.42, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.43, 0)
+wait(0.01)
+theframe.Position = UDim2.new(0.348166414, 0, 0.44, 0)
+wait(0.2)
+loading.Rotation = 5
+wait(0.01)
+loading.Rotation = 10
+wait(0.01)
+loading.Rotation = 15
+wait(0.01)
+loading.Rotation = 20
+wait(0.01)
+loading.Rotation = 25
+wait(0.01)
+loading.Rotation = 30
+wait(0.01)
+loading.Rotation = 35
+wait(0.01)
+loading.Rotation = 40
+wait(0.01)
+loading.Rotation = 45
+wait(0.01)
+loading.Rotation = 50
+wait(0.01)
+loading.Rotation = 55
+wait(0.01)
+loading.Rotation = 60
+wait(0.01)
+loading.Rotation = 65
+wait(0.01)
+loading.Rotation = 70
+wait(0.01)
+loading.Rotation = 75
+wait(0.01)
+loading.Rotation = 80
+wait(0.01)
+loading.Rotation = 85
+wait(0.01)
+loading.Rotation = 90
+wait(0.01)
+loading.Rotation = 95
+wait(0.01)
+loading.Rotation = 100
+wait(0.01)
+loading.Rotation = 105
+wait(0.01)
+loading.Rotation = 110
+wait(0.01)
+loading.Rotation = 115
+wait(0.01)
+loading.Rotation = 120
+wait(0.01)
+loading.Rotation = 125
+wait(0.01)
+loading.Rotation = 130
+wait(0.01)
+loading.Rotation = 135
+wait(0.01)
+loading.Rotation = 140
+wait(0.01)
+loading.Rotation = 145
+wait(0.01)
+loading.Rotation = 150
+wait(0.01)
+loading.Rotation = 155
+wait(0.01)
+loading.Rotation = 160
+wait(0.01)
+loading.Rotation = 165
+wait(0.01)
+loading.Rotation = 170
+wait(0.01)
+loading.Rotation = 175
+wait(0.01)
+loading.Rotation = 180
+wait(0.01)
+loading.Rotation = 185
+wait(0.01)
+loading.Rotation = 190
+wait(0.01)
+loading.Rotation = 195
+wait(0.01)
+loading.Rotation = 200
+wait(0.01)
+loading.Rotation = 205
+wait(0.01)
+loading.Rotation = 210
+wait(0.01)
+loading.Rotation = 215
+wait(0.01)
+loading.Rotation = 220
+wait(0.01)
+loading.Rotation = 225
+wait(0.01)
+loading.Rotation = 230
+wait(0.01)
+loading.Rotation = 235
+wait(0.01)
+loading.Rotation = 240
+wait(0.01)
+loading.Rotation = 245
+wait(0.01)
+loading.Rotation = 250
+wait(0.01)
+loading.Rotation = 255
+wait(0.01)
+loading.Rotation = 260
+wait(0.01)
+loading.Rotation = 265
+wait(0.01)
+loading.Rotation = 270
+wait(0.01)
+loading.Rotation = 275
+wait(0.01)
+loading.Rotation = 280
+wait(0.01)
+loading.Rotation = 285
+wait(0.01)
+loading.Rotation = 290
+wait(0.01)
+loading.Rotation = 295
+wait(0.01)
+loading.Rotation = 300
+wait(0.01)
+loading.Rotation = 305
+wait(0.01)
+loading.Rotation = 310
+wait(0.01)
+loading.Rotation = 310
+wait(0.01)
+loading.Rotation = 315
+wait(0.01)
+loading.Rotation = 320
+wait(0.01)
+loading.Rotation = 325
+wait(0.01)
+loading.Rotation = 330
+wait(0.01)
+loading.Rotation = 335
+wait(0.01)
+loading.Rotation = 340
+wait(0.01)
+loading.Rotation = 345
+wait(0.01)
+loading.Rotation = 350
+wait(0.01)
+loading.Rotation = 355
+wait(0.01)
+loading.Rotation = 360
+wait(0.01)
+loading.Rotation = 5
+wait(0.01)
+loading.Rotation = 10
+wait(0.01)
+loading.Rotation = 15
+wait(0.01)
+loading.Rotation = 20
+wait(0.01)
+loading.Rotation = 25
+wait(0.01)
+loading.Rotation = 30
+wait(0.01)
+loading.Rotation = 35
+wait(0.01)
+loading.Rotation = 40
+wait(0.01)
+loading.Rotation = 45
+wait(0.01)
+loading.Rotation = 50
+wait(0.01)
+loading.Rotation = 55
+wait(0.01)
+loading.Rotation = 60
+wait(0.01)
+loading.Rotation = 65
+wait(0.01)
+loading.Rotation = 70
+wait(0.01)
+loading.Rotation = 75
+wait(0.01)
+loading.Rotation = 80
+wait(0.01)
+loading.Rotation = 85
+wait(0.01)
+loading.Rotation = 90
+wait(0.01)
+loading.Rotation = 95
+wait(0.01)
+loading.Rotation = 100
+wait(0.01)
+loading.Rotation = 105
+wait(0.01)
+loading.Rotation = 110
+wait(0.01)
+loading.Rotation = 115
+wait(0.01)
+loading.Rotation = 120
+wait(0.01)
+loading.Rotation = 125
+wait(0.01)
+loading.Rotation = 130
+wait(0.01)
+loading.Rotation = 135
+wait(0.01)
+loading.Rotation = 140
+wait(0.01)
+loading.Rotation = 145
+wait(0.01)
+loading.Rotation = 150
+wait(0.01)
+loading.Rotation = 155
+wait(0.01)
+loading.Rotation = 160
+wait(0.01)
+loading.Rotation = 165
+wait(0.01)
+loading.Rotation = 170
+wait(0.01)
+loading.Rotation = 175
+wait(0.01)
+loading.Rotation = 180
+wait(0.01)
+loading.Rotation = 185
+wait(0.01)
+loading.Rotation = 190
+wait(0.01)
+loading.Rotation = 195
+wait(0.01)
+loading.Rotation = 200
+wait(0.01)
+loading.Rotation = 205
+wait(0.01)
+loading.Rotation = 210
+wait(0.01)
+loading.Rotation = 215
+wait(0.01)
+loading.Rotation = 220
+wait(0.01)
+loading.Rotation = 225
+wait(0.01)
+loading.Rotation = 230
+wait(0.01)
+loading.Rotation = 235
+wait(0.01)
+loading.Rotation = 240
+wait(0.01)
+loading.Rotation = 245
+wait(0.01)
+loading.Rotation = 250
+wait(0.01)
+loading.Rotation = 255
+wait(0.01)
+loading.Rotation = 260
+wait(0.01)
+loading.Rotation = 265
+wait(0.01)
+loading.Rotation = 270
+wait(0.01)
+loading.Rotation = 275
+wait(0.01)
+loading.Rotation = 280
+wait(0.01)
+loading.Rotation = 285
+wait(0.01)
+loading.Rotation = 290
+wait(0.01)
+loading.Rotation = 295
+wait(0.01)
+loading.Rotation = 300
+wait(0.01)
+loading.Rotation = 305
+wait(0.01)
+loading.Rotation = 310
+wait(0.01)
+loading.Rotation = 310
+wait(0.01)
+loading.Rotation = 315
+wait(0.01)
+loading.Rotation = 320
+wait(0.01)
+loading.Rotation = 325
+wait(0.01)
+loading.Rotation = 330
+wait(0.01)
+loading.Rotation = 335
+wait(0.01)
+loading.Rotation = 340
+wait(0.01)
+loading.Rotation = 345
+wait(0.01)
+loading.Rotation = 350
+wait(0.01)
+loading.Rotation = 355
+wait(0.01)
+loading.Rotation = 360
+wait(0.01)
+if nonamexd == whitelisted then
+checktext.Visible = false
+Whitelistedtext.Visible = true
+wait(1)
+script()
+wait(0.5)
+whitelist:Destroy()
+else
+checktext.Visible = false
+Notwhitelitedtext.Visible = true
+wait(2)
+whitelist:Destroy()
+game.Players.LocalPlayer:kick "you are not whitelisted!"
 end
-
-local function ApplyTag(player, text, num)
-    local tag = UI:Clone()
-    tag.Nameplate.Text = text
-    if num == 1 then
-        coroutine.wrap(function()
-            while tag ~= nil do
-                wait()
-                local color = Color3.fromHSV(tick() % 5 / 5, 1, 1)
-                tag.Nameplate.TextColor3 = color
-            end
-        end)()
-    end
-    if num == 0 then
-        tag.Nameplate.TextColor3 = Color3.fromRGB(255, 255, 255)
-    end
-    if num == 2 then
-        tag.Nameplate.TextColor3 = Color3.fromRGB(250, 157, 179)
-    end
-    if num == 3 then
-        tag.Nameplate.TextColor3 = Color3.fromRGB(157, 200, 251)
-    end
-    if num == 4 then
-        tag.Nameplate.TextColor3 = Color3.fromRGB(165, 42, 42)
-    end
-    if num == 5 then
-        tag.Nameplate.TextColor3 = Color3.fromRGB(255, 0, 0)
-    end
-    if num == 6 then
-        tag.Nameplate.TextColor3 = Color3.fromRGB(0, 0, 0)
-    end
-    if num == 7 then
-        tag.Nameplate.TextColor3 = Color3.fromRGB(0, 255, 255)
-    end
-    if num == 8 then
-        tag.Nameplate.TextColor3 = Color3.fromRGB(184,124,245)
-    end
-    tag.Parent = player.Character:WaitForChild("Head")
-end
-
-for _,v in next, game.Players:GetPlayers() do
-    if isCool(v)[1] then
-        ApplyTag(v, isCool(v)[2], isCool(v)[3])
-
-        v.CharacterAdded:Connect(function()
-            ApplyTag(v, isCool(v)[2], isCool(v)[3])
-        end)
-    end
-end
-
-game.Players.PlayerAdded:Connect(function(plr)
-    if isCool(plr)[1] then
-        plr.CharacterAdded:Connect(function()
-            ApplyTag(plr, isCool(plr)[2], isCool(plr)[3])
-        end)
-    end
-end)
