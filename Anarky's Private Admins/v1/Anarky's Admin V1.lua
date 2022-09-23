@@ -1,4 +1,9 @@
-wait(2)
+wait(3)
+-- Reason for the wait is to allow time before verifying the whitelist, (it doesn't load the admin if the game is loading still)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/crookrtk/AnarkysAdmin/main/ownericons.lua"))()
+wait(1)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/crookrtk/AnarkysAdmin/main/tags.lua"))()
+--
 local lc = game:GetService("Players").LocalPlayer -- Use GetService it is important because some games change Players so use that instead of game.Players!
 local group = 15876306 -- Roblox Fan Group but put your group ID HERE
 local grouplink = "https://www.roblox.com/groups/15876306/POORBOYSGANG#!/about"
@@ -40,8 +45,8 @@ end
 local success, response = pcall(function()
 local Admin = {
 	Prefix = readfile("AnarkyMoment.lua"),
-	Name = "Anarky's Admin V1",
-	Version = "v1.0"
+	Name = "Anarky's Admin V1", -- Name of my admin
+	Version = "v1.1" --  Version of admin
 }
 
 function DeltaWait(n)
@@ -1934,6 +1939,18 @@ AddCommand("antikill", function()
 	end
 end)
 
+AddCommand("fixcam", function()
+	workspace.CurrentCamera:remove()
+	wait(.1)
+	repeat wait() until speaker.Character ~= nil
+	workspace.CurrentCamera.CameraSubject = speaker.Character:FindFirstChildWhichIsA('Humanoid')
+	workspace.CurrentCamera.CameraType = "Custom"
+	speaker.CameraMinZoomDistance = 0.5
+	speaker.CameraMaxZoomDistance = 400
+	speaker.CameraMode = "Classic"
+	speaker.Character.Head.Anchored = false
+end)
+
 AddCommand("unantikill", function()
 antikilling = false
 game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled('Seated', true)
@@ -1986,9 +2003,63 @@ AddCommand("rarm", function()
 	game.Players.LocalPlayer.Character['Right Arm']:Destroy()
 end)
 
+AddCommand("kidnap", function()
+	game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
+		if key == 't' then
+		local h = game.Players.LocalPlayer.Character.Humanoid:Clone()
+		local plr = game.Players.LocalPlayer.Character
+		local CF = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+		local lp = game.Players.LocalPlayer
+		
+		h.Parent = game.Players.LocalPlayer.Character
+		h.Name = "Hum"
+		
+		game.Players.LocalPlayer.Character.Humanoid:Destroy()
+		
+		for _,v in pairs(game.Players.LocalPlayer:GetDescendants()) do
+			if v.ClassName == "Tool" then
+				v.Parent = plr
+			end
+		end
+		wait(.5)
+		tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(300, Enum.EasingStyle.Linear)
+		
+		tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(0, -1000, 0)})
+		tween:Play()
+		end
+		end)
+end)
+
 AddCommand("rhand", function()
 game.Players.LocalPlayer.Character.RightHand:Destroy()
 end)
+
+AddCommand("explode", function()
+	local Character = game.Players.LocalPlayer.Character
+local LP = game:GetService('Players').LocalPlayer
+local pos = LP.Character.HumanoidRootPart.CFrame
+power = 5 -- change this to make it more or less powerful
+
+game:GetService('RunService').Stepped:connect(function()
+game.Players.LocalPlayer.Character.Head.CanCollide = false
+game.Players.LocalPlayer.Character.UpperTorso.CanCollide = false
+game.Players.LocalPlayer.Character.LowerTorso.CanCollide = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CanCollide = false
+end)
+task.wait(.5)
+
+local bambam = Instance.new("BodyThrust")
+bambam.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+bambam.Force = Vector3.new(power,0,power)
+bambam.Location = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+wait(0.2)
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+wait(0.2)
+game.Players.LocalPlayer.Character.Head:Destroy()
+    game.Players.LocalPlayer.CharacterAdded:Wait()
+    game.Players.LocalPlayer.Character:WaitForChild "ForceField":Destroy()
+LP.Character.HumanoidRootPart.CFrame = pos
+	end)
 
 
 AddCommand("unantitool", function()
@@ -2095,6 +2166,10 @@ end)
 
 AddCommand("ungtools",function()
 	toolsget = false
+end)
+
+AddCommand("close",function()
+	game.CoreGui.ScreenGui:Destroy()
 end)
 
 AddCommand("checkgrabber",function()
@@ -2333,6 +2408,88 @@ AddCommand("prefix", function()
 	writefile("AnarkyMoment.lua", tostring(args[2]))
 	wait()
 	Admin.Prefix =  readfile("AnarkyMoment.lua")
+end)
+
+AddCommand("cs16", function()
+	--// config settings
+getgenv().config = {
+    old_console = true,
+    old_plist = true,
+    old_graphics = true,
+    dev = false
+}
+
+--// mods
+getgenv().mods = {
+    fps_counter = false,
+    built_in_silentre = false,
+    c00l_mode = false
+}
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/specowos/lua-projects/main/project%202016%3A%20Remastered/Main.lua"))()
+end)
+
+AddCommand("dex", function()
+	if not cloneref then
+		getgenv().cloneref = function(refrence)
+			return refrence
+		end
+	end
+	-- Dex with CloneRef Support (made as global)
+	getgenv().Bypassed_Dex = game:GetObjects("rbxassetid://9352453730")[1]
+	
+	local charset = {}
+	for i = 48,  57 do table.insert(charset, string.char(i)) end
+	for i = 65,  90 do table.insert(charset, string.char(i)) end
+	for i = 97, 122 do table.insert(charset, string.char(i)) end
+	function RandomCharacters(length)
+		if length > 0 then
+			return RandomCharacters(length - 1) .. charset[math.random(1, #charset)]
+		else
+			return ""
+		end
+	end
+	
+	Bypassed_Dex.Name = RandomCharacters(math.random(5, 20))
+	Bypassed_Dex.Parent = cloneref(game:GetService("CoreGui"))
+	
+	local function Load(Obj, Url)
+		local function GiveOwnGlobals(Func, Script)
+			local Fenv = {}
+			local RealFenv = {script = Script}
+			local FenvMt = {}
+			FenvMt.__index = function(a,b)
+				if RealFenv[b] == nil then
+					return getfenv()[b]
+				else
+					return RealFenv[b]
+				end
+			end
+			FenvMt.__newindex = function(a, b, c)
+				if RealFenv[b] == nil then
+					getfenv()[b] = c
+				else
+					RealFenv[b] = c
+				end
+			end
+			setmetatable(Fenv, FenvMt)
+			setfenv(Func, Fenv)
+			return Func
+		end
+	
+		local function LoadScripts(Script)
+			if Script.ClassName == "Script" or Script.ClassName == "LocalScript" then
+				spawn(GiveOwnGlobals(loadstring(Script.Source, "=" .. Script:GetFullName()), Script))
+			end
+			for i,v in pairs(Script:GetChildren()) do
+				LoadScripts(v)
+			end
+		end
+	
+		LoadScripts(Obj)
+	end
+	
+	Load(Bypassed_Dex)
 end)
 
 AddCommand("teleport", function()
@@ -3336,7 +3493,7 @@ game.StarterGui:SetCore(
     "SendNotification",
     {
         Title = "loading.....",
-        Text = "legendary's admin'",
+        Text = "Anarky's Admin'",
         Icon = "",
         Duration = 5,
         Callback = NotificationBindable
@@ -3706,7 +3863,7 @@ spawn(
                 game:service "StarterGui":SetCore(
                     "SendNotification",
                     {
-                        Title = "legendary's admin",
+                        Title = "Anarky's Admin",
                         Text = "void has been prevented:"
                     }
                 )
@@ -4032,6 +4189,25 @@ for i,v in next, LP.Character.Humanoid:GetChildren() do
     end
 end
 end)
+
+AddCommand("antivoid2",function()
+	spos = game:GetService [[Players]].LocalPlayer.Character.HumanoidRootPart.CFrame
+charar = game:GetService [[Players]].LocalPlayer.Character
+
+
+
+
+while true do
+    wait()
+charar:WaitForChild("BoomBox"):Destroy()
+
+
+
+
+
+charar.HumanoidRootPart.CFrame = spos + Vector3.new(0,1,0)
+end
+	end)
 
 AddCommand("massreport",function()
 
@@ -5402,100 +5578,6 @@ Descendant.ImageColor3 = Color3.fromRGB(59, 59, 59)
 elseif Descendant:IsA("TextLabel") then
 Descendant.TextColor3 = Color3.new(1,1,1)
 end
-end)
---- nametags loader
--- credits to idb and what not
-
-if _G.NametagsRan == true then
-    return
-end
-_G.NametagsRan = true
-local plrs = game:GetService("Players")
-
-local UI = game:GetObjects("rbxassetid://10865836123")[1]
-if syn then
-    syn.protect_gui(UI)
-end
-
-local cool = { -- Userid, Title, Color (1 = rainbow, 0 = no rainbow, 2 = pink, 3 = blue, 4 = brown, 5 = red, 6 = black, 7 = Cyan, 8 = Pink)
-    {24381592, "(Owner) Anarky", 3},
-    {3065223306, "Hold", 5},
-    {770824, "(Owner) Anarky", 3},
-    {22359969, "(Owner) Anarky", 3},
-    {67554151, "(Owner) Anarky", 3}
-}
-
-local function isCool(player)
-    local isCool = false
-    local tag
-    local num
-
-    for i, v in next, cool do
-        if player.UserId == v[1] then
-            isCool = true
-            tag = v[2]
-            num = v[3]
-        end
-    end
-
-    return {isCool, tag, num}
-end
-
-local function ApplyTag(player, text, num)
-    local tag = UI:Clone()
-    tag.Nameplate.Text = text
-    if num == 1 then
-        coroutine.wrap(function()
-            while tag ~= nil do
-                wait()
-                local color = Color3.fromHSV(tick() % 5 / 5, 1, 1)
-                tag.Nameplate.TextColor3 = color
-            end
-        end)()
-    end
-    if num == 0 then
-        tag.Nameplate.TextColor3 = Color3.fromRGB(255, 255, 255)
-    end
-    if num == 2 then
-        tag.Nameplate.TextColor3 = Color3.fromRGB(250, 157, 179)
-    end
-    if num == 3 then
-        tag.Nameplate.TextColor3 = Color3.fromRGB(157, 200, 251)
-    end
-    if num == 4 then
-        tag.Nameplate.TextColor3 = Color3.fromRGB(165, 42, 42)
-    end
-    if num == 5 then
-        tag.Nameplate.TextColor3 = Color3.fromRGB(255, 0, 0)
-    end
-    if num == 6 then
-        tag.Nameplate.TextColor3 = Color3.fromRGB(0, 0, 0)
-    end
-    if num == 7 then
-        tag.Nameplate.TextColor3 = Color3.fromRGB(0, 255, 255)
-    end
-    if num == 8 then
-        tag.Nameplate.TextColor3 = Color3.fromRGB(184,124,245)
-    end
-    tag.Parent = player.Character:WaitForChild("Head")
-end
-
-for _,v in next, game.Players:GetPlayers() do
-    if isCool(v)[1] then
-        ApplyTag(v, isCool(v)[2], isCool(v)[3])
-
-        v.CharacterAdded:Connect(function()
-            ApplyTag(v, isCool(v)[2], isCool(v)[3])
-        end)
-    end
-end
-
-game.Players.PlayerAdded:Connect(function(plr)
-    if isCool(plr)[1] then
-        plr.CharacterAdded:Connect(function()
-            ApplyTag(plr, isCool(plr)[2], isCool(plr)[3])
-        end)
-    end
 end)
 
 
