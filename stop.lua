@@ -70,7 +70,7 @@ getgenv().themes = {
     }
 }
 local gadmin = {}
-getgenv().prefix3 = "'"
+getgenv().prefix3 = ";"
 gadmin.load = function(thm,title,btcmds)
     if not thm then 
         thm = getgenv().themes.dark
